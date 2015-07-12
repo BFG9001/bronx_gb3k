@@ -86,7 +86,6 @@ function ENT:HandleStuck() --Didn't figure out how to use this thing until I che
 		self.StuckTime = nil 
 		self.ShouldHandleStuck = false
 	end
-	print"rip"
 	coroutine.yield()
 end
 

@@ -2,7 +2,7 @@ AddCSLuaFile()
 
 local client_files = {"cl_postprocess.lua"}
 
-local server_files = {}
+local server_files = {"sv_mapsetup.lua"}
 
 local shared_files = {"gamestates/debug.lua"}
 

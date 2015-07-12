@@ -140,16 +140,16 @@ end
 function SWEP:Reload()
 	self:EmitSound("buttons/button5.wav")
 
-	if CLIENT then
-	print"LOOT"
-	print(util.TableToJSON(self.LootSpawns, true))
-	print"ENEMIES"
-	print(util.TableToJSON(self.EnemySpawns, true))
-	print"RADIOS"
-	print(util.TableToJSON(self.ObjectiveSpawns, true))
+	if CLIENT or game.SinglePlayer() then
+	print"loot.txt"
+	file.Write("loot.txt", util.TableToJSON(self.LootSpawns, true))
+	print"enemies.txt"
+	file.Write("enemies.txt", util.TableToJSON(self.EnemySpawns, true))
+	print"obj.txt"
+	file.Write("obj.txt", util.TableToJSON(self.ObjectiveSpawns, true))
 	end
 
-	self:GetOwner():ChatPrint("Map setup data printed to console.")
-	self:GetOwner():ChatPrint("Paste 'LOOT' into loot.txt, 'ENEMIES' into enemies.txt, and 'RADIOS' into obj.txt.")
-	self:GetOwner():ChatPrint("Files go in data/bronx_mapsetup/<mapname>/.")
+	self:GetOwner():ChatPrint("Map setup data saved to your /data folder.")
+	self:GetOwner():ChatPrint("Filenames are loot.txt, enemies.txt, and obj.txt.")
+	self:GetOwner():ChatPrint("Files go in data/bronx_mapsetup/" .. game.GetMap() .. "/.")
 end
