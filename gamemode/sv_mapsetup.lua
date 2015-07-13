@@ -21,7 +21,8 @@ function GM:SetupMapData()
 			GAMEMODE.MAPDATA.ObjSpawn = util.JSONToTable(file.Read( filePathEX .. obj.txt, "DATA" ))
 			GAMEMODE.MAPDATA.PlayerSpawn = util.JSONToTable(file.Read( filePathEX .. playerspawns.txt, "DATA" ))
 	elseif file.Exists("gamemodes/" .. engine.ActiveGamemode() .. "/gamemode/sv_default_mapsetup/" .. game.GetMap() .. ".lua", "GAME") then
-		include("sv_default_mapsetup/" .. game.GetMap() .. ".lua")
+		--include("sv_default_mapsetup/" .. game.GetMap() .. ".lua") --fuck man
+		include("../gamemode/sv_default_mapsetup/" .. game.GetMap() .. ".lua")
 	else
 		Error("[BRONX] Map setup error! You are using a map that has no setup files, or is not a default map. Please switch to a default map or create the setup files in data/bronx_mapsetup/<mapname here>/ using the weapon_mapsetup_tool.")
 	end

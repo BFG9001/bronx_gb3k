@@ -1,10 +1,11 @@
+--STOPGAP SOLUTION DON'T JUDGE ME ASSHOLE
 local OBJ
 local LOOT
 local PLAYERSPAWN
 local ENEMYSPAWN
 
 ////////////
-LOOT = util.JSONToTable( "{
+LOOT = util.JSONToTable( [[{
 	"1": 
 	{
 		"Ang": "{0 -89.6974 0}",
@@ -600,12 +601,11 @@ LOOT = util.JSONToTable( "{
 		"Ang": "{0 -88.3465 0}",
 		"Pos": "[1779.9188 -709.5324 -1039.9688]"
 	}
-}" )
+}]] )
 
 
 ////////////
-ENEMYSPAWN = util.JSONToTable("
-{
+ENEMYSPAWN = util.JSONToTable( [[{
 	"1": 
 	{
 		"Ang": "{0 89.7143 0}",
@@ -976,11 +976,11 @@ ENEMYSPAWN = util.JSONToTable("
 		"Ang": "{0 90.6481 0}",
 		"Pos": "[987.2115 -1771.6696 -1551.9688]"
 	}
-}")
+}]])
 
 
 ////////////
-OBJ = util.JSONToTable("{
+OBJ = util.JSONToTable([[{
 	"1": 
 	{
 		"Ang": "{0 -129.0901 0}",
@@ -1281,11 +1281,11 @@ OBJ = util.JSONToTable("{
 		"Ang": "{0 -33.3894 0}",
 		"Pos": "[-1147.851 2078.4299 -775.9688]"
 	}
-}")
+}]])
 
 
 ////////////
-PLAYERSPAWN = util.JSONToTable("{
+PLAYERSPAWN = util.JSONToTable([[{
 	"1": 
 	{
 		"Ang": "{0 179.6756 0}",
@@ -1416,7 +1416,7 @@ PLAYERSPAWN = util.JSONToTable("{
 		"Ang": "{0 -178.2815 0}",
 		"Pos": "[795.6871 2063.6785 -1551.9688]"
 	}
-}")
+}]])
 
 
 
