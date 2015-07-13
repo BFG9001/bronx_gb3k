@@ -26,6 +26,11 @@ function GAMESTATE:PlayerSay(ply, txt, teamC, ded)
 	if string.StartWith(txt, "!ammo") then
 		ply:SetAmmo(9999, ply:GetActiveWeapon().Primary.Ammo or "pistol" )
 	end
+	if string.StartWith(txt, "!radio") then
+		local radio = ents.Create("ent_bronx_ghettoblaster")
+			radio:SetPos(ply:GetEyeTrace().HitPos)
+			radio:Spawn()
+	end
 end
 
 function GAMESTATE:DrawHUD()

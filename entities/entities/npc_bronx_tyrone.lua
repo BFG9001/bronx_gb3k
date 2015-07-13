@@ -255,6 +255,12 @@ end
 
 end
 
+function ENT:PhysicsCollide(coldata, collidedent)
+	if collidedent:GetClass() == "func_breakable" then
+		ent:TakeDamage(100)
+	end
+end
+
 --
 -- List the NPC as spawnable
 --

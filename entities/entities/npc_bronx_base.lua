@@ -73,8 +73,10 @@ function ENT:OnStuck()
 	if not self.StuckTime then
 		self.StuckTime = CurTime()
 	end
-	if self.StuckTime and (CurTime() - self.StuckTime) > 8 then
+	if self.StuckTime and (CurTime() - self.StuckTime) > 7 then
 		self.ShouldHandleStuck = true
+	else
+		self.ShouldHandleStuck = false
 	end
 end
 
