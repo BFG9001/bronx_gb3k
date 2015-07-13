@@ -1,6 +1,6 @@
 AddCSLuaFile()
 
-local client_files = {"cl_postprocess.lua"}
+local client_files = {"cl_postprocess.lua", "cl_basehud.lua"}
 
 local server_files = {"sv_mapsetup.lua"}
 
