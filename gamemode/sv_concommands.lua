@@ -9,6 +9,7 @@ function PlayerForceDropWeapon(ply, wep)
 		--NewWeapon:SetClip1(dropWep:Clip1())
 		--NewWeapon:SetClip2(dropWep:Clip2())
 		NewWeapon:SetPos(ply:GetShootPos())
+		NewWeapon:SetAngles(ply:GetAngles())
 		NewWeapon:Spawn()
 
 		NewWeapon:GetPhysicsObject():SetVelocity(ply:GetAimVector() * 200)

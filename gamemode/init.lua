@@ -44,7 +44,8 @@ function GM:PlayerInitialSpawn( ply )
         timer.Simple( .1 , function()
             ply:KillSilent() --Fixes reconnection exploit as well as other issues such as spawning at default info nodes as opposed to gamemode spawns.
             --GAMEMODE:PlayerSpawn(ply)
-            hook.Call("PlayerSpawn", GAMEMODE, ply)
+            --hook.Call("PlayerSpawn", GAMEMODE, ply)
+            ply:Spawn()
         end)
     end
 end
@@ -59,6 +60,7 @@ function GM:InitPostEntity()
 end
 
 function GM:PlayerShouldTakeDamage(ply, attacker)
+    print("PlayerShouldTakeDamage Called")
     if attacker:IsPlayer() and (not ply == attacker)then
         return false
     end
