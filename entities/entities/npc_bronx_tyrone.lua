@@ -22,12 +22,17 @@ function ENT:OnInit()
 	self.weaponmodel:AddEffects(EF_BONEMERGE)
 	end
 	self.RunAnim = false
+	--self:SetTrigger(true)
 end
 
 function ENT:BehaveUpdate( fInterval )
 
 
 	if ( !self.BehaveThread ) then return end
+	local quicktrace = util.TraceLine({start = self:GetPos() + Vector(0,0,20), endpos = self:GetPos() + Vector(0,0,20) + (self:GetAngles():Forward() * 24)})
+	if IsValid(quicktrace.Entity) and quicktrace.Entity:GetClass() == "func_breakable" then
+		quicktrace.Entity:TakeDamage(100)
+	end
 	
 	if self.NextAttack < CurTime() then
 		local ent = ents.FindInSphere( self:GetPos(), 120 )
@@ -87,8 +92,6 @@ end
 function ENT:FilterForTrace()
 	return ents.FindByClass( "npc_bronx_tyrone*" )
 end
-
-
 
 function ENT:MeleeAttack()
 	if self:GetNWBool("Stunned", false) then return end
@@ -255,11 +258,6 @@ end
 
 end
 
-function ENT:PhysicsCollide(coldata, collidedent)
-	if collidedent:GetClass() == "func_breakable" then
-		ent:TakeDamage(100)
-	end
-end
 
 --
 -- List the NPC as spawnable
