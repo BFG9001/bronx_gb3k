@@ -56,9 +56,8 @@ function GM:HUDPaint()
 	end
 	--PrintTable(polyTab)
 	surface.DrawPoly(polyTab)
-	--for k,v in pairs(polyTab) do
-	--	surface.DrawCircle(v.x,v.y,5,Color(255,0,0))
-	--end
+	local text = tostring(LocalPlayer():Armor())
+	draw.SimpleText(text, "BronxHUDCoolvetica", armorOriginX, armorOriginY, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 end
 
 local suppressElements = {

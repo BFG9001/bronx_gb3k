@@ -4,8 +4,6 @@ AddCSLuaFile( "shared.lua" )
 include( 'shared.lua' )
 
 
-GM.SpawnWeapons = {}
-GM.SpawnWeapons[1] = {"weapon_bronx_glok17"}
 
 GM.Loot = {}
 GM.Loot.Weapons = {""}
@@ -35,21 +33,6 @@ function GM:PlayerSpawn( ply )
  
 end
 
-
-function GM:PlayerLoadout( ply )
-	ply:Give(table.Random(self.SpawnWeapons[1]))
-    ply:StripAmmo()
-    hook.Call("PlayerLoadoutAmmo", GAMEMODE, ply)
-
-end
-
-function GM:PlayerLoadoutAmmo(ply)
-    for k,v in pairs(ply:GetWeapons()) do
-        if v.Primary and v.Primary.ClipSize > 0 then
-            ply:SetAmmo( v.Primary.ClipSize * 9, v.Primary.Ammo )
-        end
-    end
-end
 
 function GM:PlayerInitialSpawn( ply )
 	ply:PrintMessage( HUD_PRINTTALK, "Welcome to the Bronx, " .. ply:Name() .. ", where only the stronx survive." )
