@@ -12,6 +12,22 @@ DeriveGamemode( "base" )
 
 CURRENT_GAMESTATE = "BronxGameState"
 SetGlobalString( CURRENT_GAMESTATE, "Debug" )
+SetGlobalInt( "Bronx_UniversalTimer", 0 )
+SetGlobalFloat( "Bronx_TimerSetTime", CurTime())
+
+function GetUniTimer()
+	return GetGlobalInt("Bronx_UniversalTimer", 0), (GetGlobalFloat( "Bronx_TimerSetTime", 0))
+end
+
+function SetUniTimer(int)
+	SetGlobalInt("Bronx_UniversalTimer", int or 0)
+	SetGlobalFloat("Bronx_TimerSetTime", CurTime())
+end
+
+timer.Create("Bronx_UniversalTimer", 1, 0, function() 
+	SetGlobalInt("Bronx_UniversalTimer", math.max(GetGlobalInt("Bronx_UniversalTimer", 0) - 1, 0) ) 
+end)
+
 
 
 function GM:Initialize()
@@ -34,4 +50,10 @@ end
 
 function GM:StateFinish()
 
+end
+
+function GM:SetState(identifier) --USE THIS WHENEVER YOU TRANSITION BETWEEN STATES
+	hook.Call("StateFinish", GAMEMODE, nil )
+	GetGlobalString(CURRENT_GAMESTATE, identifier or "Debug")
+	hook.Call("StateBegin", GAMEMODE, nil )
 end

@@ -33,3 +33,23 @@ function GM:PlayerCanPickupWeapon(ply, wep)
 	end
 	return true
 end
+
+local MAXARMOR = 30
+hook.Add("Think", "Bronx_RestrictMaxArmor", function()
+		for k, v in pairs(player.GetAll()) do
+			v:SetArmor(math.min(v:Armor(), MAXARMOR))
+		end
+	end)
+
+local pickups = {
+	"item_ammo",
+	"item_box_buckshot",
+	"item_rpg_round"
+}
+function GM:PlayerCanPickupItem(ply, item)
+	if item:GetClass() == "item_battery" then
+		if ply:Armor() >= MAXARMOR then
+			return false
+		end
+	end
+end

@@ -5,3 +5,5 @@ ENT.Author = ""
 ENT.Category = ""
 ENT.Spawnable = true
 ENT.AdminSpawnable = false
+
+ENT.IsBronxRadio = true

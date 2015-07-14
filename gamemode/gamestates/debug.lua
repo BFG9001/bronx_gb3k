@@ -19,7 +19,7 @@ function GAMESTATE:PlayerSay(ply, txt, teamC, ded)
 			tyrone:Spawn()
 			return ""
 	end
-	if string.StartWith(txt, "!weapon") then
+	if string.StartWith(txt, "!give") then
 		local strTab = string.Explode(" ", txt)
 			ply:Give(strTab[2])
 	end
