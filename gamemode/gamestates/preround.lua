@@ -10,7 +10,7 @@ function GAMESTATE:StateBegin()
 end
 
 function GAMESTATE:Think()
-	print("Preround active")
+	--print("Preround active")
 	if #player.GetAll() < 1 then
 		SetUniTimer(self.PreRoundTime)
 	end
