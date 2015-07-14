@@ -104,7 +104,8 @@ function ENT:IsValidTarget(ent)
 end
 
 function ENT:GetNearestTargetFromTable(tab)
-	local maxAcquireDistSqr = 9999999
+	--local maxAcquireDistSqr = 9999999
+	local maxAcquireDistSqr = 9998001
 	local target
 	for _, ent in pairs(tab) do
 		if (not self:IsValidTarget(ent)) then continue end

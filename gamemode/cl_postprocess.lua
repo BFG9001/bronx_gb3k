@@ -9,5 +9,5 @@ local colorData = {
 
 function GM:RenderScreenspaceEffects()
 	DrawColorModify( colorData )
-	DrawSobel( 1 )
+	DrawSobel( .9 )
 end
