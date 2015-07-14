@@ -68,6 +68,7 @@ function GM:PlayerCanPickupItem(ply, item)
 		if ply:Armor() >= MAXARMOR then
 			return false
 		end
+		return true
 	end
 
 	local ammoType = nil --For default ammo pickups

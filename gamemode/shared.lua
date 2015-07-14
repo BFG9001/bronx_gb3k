@@ -31,6 +31,16 @@ end)
 
 
 function GM:Initialize()
+	for key, value in pairs(GAMEMODE) do
+		if type(value) == "function" then
+			hook.Add( key, "GAMESTATE_" .. key, function(...)
+				local STATE = GAMEMODE.GameStates[GetGlobalString(CURRENT_GAMESTATE, "Debug")]
+				if STATE and STATE[key] and (type(STATE[key]) == "function") then
+					return STATE[key](STATE, ...)
+				end
+			end)
+		end
+	end
 	self:SetState("PreRound")
 end
 
@@ -49,18 +59,7 @@ function GM:SetState(identifier) --USE THIS WHENEVER YOU TRANSITION BETWEEN STAT
 	print(GAMEMODE.GameStates[identifier])
 	if not GAMEMODE.GameStates[identifier] then identifier = "Debug" end
 	print("State changed to " .. identifier)
-	hook.Call("StateFinish", GAMEMODE, nil )
+	if SERVER then hook.Call("StateFinish", GAMEMODE, nil ) end
 	SetGlobalString(CURRENT_GAMESTATE, identifier or "Debug")
-	for key, value in pairs(GAMEMODE) do
-		if type(value) == "function" then
-			hook.Remove( key, "GAMESTATE_" .. key )
-			hook.Add( key, "GAMESTATE_" .. key, function(...)
-				local STATE = GAMEMODE.GameStates[GetGlobalString(CURRENT_GAMESTATE, "Debug")]
-				if STATE and STATE[key] and (type(STATE[key]) == "function") then
-					return STATE[key](STATE, ...)
-				end
-			end)
-		end
-	end
-	hook.Call("StateBegin", GAMEMODE, nil )
+	if SERVER then hook.Call("StateBegin", GAMEMODE, nil ) end
 end
