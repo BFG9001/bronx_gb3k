@@ -402,6 +402,10 @@ function SWEP:Reload()
 	self:WatReload(ACT_VM_RELOAD)
 end
 
+function SWEP:OnRemove()
+	self:WatOnRemove()
+end
+
 function SWEP:Think()
 	self:WatThink()
 	self:WatInterruptedReloadThink()

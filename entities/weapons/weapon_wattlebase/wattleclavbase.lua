@@ -75,6 +75,13 @@ function SWEP:ClavHolster()
 end
 
 function SWEP:ClavOnRemove()
+	if CLIENT and IsValid(self.Owner) then
+		local vm = self.Owner:GetViewModel()
+		if IsValid(vm) then
+			self:RemoveModels(self.VElements)
+			self:RemoveModels(self.WElements)
+		end
+	end
 	self:Holster()
 end
 
@@ -390,6 +397,23 @@ if CLIENT then
 		end
 		
 	end
+	
+	// Added by Awcmon 07.14.15--------------------------------------------
+	function SWEP:RemoveModels( tab )
+
+		if (!tab) then return end
+
+		for k, v in pairs( tab ) do
+			if (IsValid(v.modelEnt)) then 
+				v.modelEnt:Remove()
+			end
+			
+			if (IsValid(v.spriteMaterial)) then 
+				v.spriteMaterial:Remove()
+			end
+		end
+	end
+	//----------------------------------------------------------------------
 	
 	local allbones
 	local hasGarryFixedBoneScalingYet = false
