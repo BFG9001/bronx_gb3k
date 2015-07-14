@@ -44,6 +44,8 @@ function GM:StateFinish()
 end
 
 function GM:SetState(identifier) --USE THIS WHENEVER YOU TRANSITION BETWEEN STATES
+	if SERVER then print("Server Set State") end
+	if CLIENT then print("Client Set State") end
 	print(GAMEMODE.GameStates[identifier])
 	if not GAMEMODE.GameStates[identifier] then identifier = "Debug" end
 	print("State changed to " .. identifier)
