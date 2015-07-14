@@ -30,6 +30,7 @@ function GAMESTATE:StateFinish()
     		ply:Spawn()
     	end
     	ply:ChatPrint("DEBUG: Preround ended.")
+    	ply:ChatPrint("Gamestate is " .. GetGlobalString(CURRENT_GAMESTATE))
 	end
 end
 
