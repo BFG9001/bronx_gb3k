@@ -31,3 +31,24 @@ function GM:SpawnClusterNPCs(ClusterSize, seedIndex)
 		CreateNPC(data.Pos, data.Ang)
 	end
 end
+
+function GM:SpawnBoomBoxes(count)
+	local spawnData = GAMEMODE.MAPDATA.EnemySpawn
+		count = math.min(count, table.Count(spawnData))
+	for i = 1, num do
+	
+		local Rand = math.random(1, table.Count(spawnData))
+
+		while (!self:CheckObjectives(Rand)) do
+			Rand = math.random(1, table.Count(spawnData))
+		end
+		
+		--PlacedObjTable[i] = Rand
+		
+		local Obj = ents.Create("ent_bronx_ghettoblaster")
+		Obj:SetPos(spawnData[Rand].Pos)
+		Obj:SetAngles(spawnData[Rand].Ang)
+		Obj:Spawn()
+	 
+	end
+end
