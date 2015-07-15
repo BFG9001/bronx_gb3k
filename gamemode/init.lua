@@ -61,7 +61,7 @@ end
 
 function GM:PlayerShouldTakeDamage(ply, attacker)
     --print("PlayerShouldTakeDamage Called")
-    if attacker:IsPlayer() and (ply ~= attacker) then
+    if attacker:IsPlayer() --[[and (ply ~= attacker)]] then
         return false
     end
     return true

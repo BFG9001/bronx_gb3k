@@ -94,8 +94,17 @@ local ItemTable = {
 local WeaponLoot = {
 	"weapon_bronx_caws870", 
 	"weapon_bronx_ma41",
+	"weapon_bronx_mack11",
+	"weapon_bronx_sprayk47",
+	"weapon_bronx_caws870", 
+	"weapon_bronx_ma41",
+	"weapon_bronx_sprayk47",
 	"weapon_bronx_glok17",
-	"weapon_bronx_mack11"
+	"weapon_bronx_mack11",
+	"weapon_bronx_deagle",
+	"weapon_bronx_baton",
+	"weapon_bronx_melonbomb",
+	"weapon_bronx_pipe"
 }
 function GM:SpawnLootDrop(count)
 		local spawnData = GAMEMODE.MAPDATA.LootSpawn

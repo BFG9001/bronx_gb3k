@@ -39,7 +39,7 @@ function ENT:BehaveUpdate( fInterval )
 		for k,v in pairs( ent ) do
 			//if (self:PlayerCheck(v) || v:IsNPC()) and IsValid(v) then
 			if !IsValid(v) then return end
-			if v:IsPlayer() || v:IsNPC() and v:Health() > 0 then
+			if (v:IsPlayer() || v:IsNPC() and v:Health() > 0) or v.IsWatermelon then
 				self.loco:FaceTowards( v:GetPos() )
 				//self.loco:Jump( )
 				self.Attacking = true

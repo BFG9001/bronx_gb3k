@@ -100,12 +100,12 @@ function ENT:IsValidTarget(ent)
 	if (!ent:IsValid()) then return false end
 
 	return ((ent:IsPlayer() and ent:Alive()) or
-	        (ent:IsNPC() and ent:Health() > 0))
+	        (ent:IsNPC() and ent:Health() > 0) or (IsValid(ent) and ent.IsWatermelon))
 end
 
 function ENT:GetNearestTargetFromTable(tab)
 	--local maxAcquireDistSqr = 9999999
-	local maxAcquireDistSqr = 9998001
+	local maxAcquireDistSqr = math.huge
 	local target
 	for _, ent in pairs(tab) do
 		if (not self:IsValidTarget(ent)) then continue end
@@ -153,7 +153,7 @@ end
 
 function ENT:BuildTargetTable()
 	local targets = player.GetAll()
-		table.Add( targets, ents.FindByClass("ent_bronx_watermelonbomb") )
+		targets = table.Add( targets, ents.FindByClass("ent_bronx_watermelonbomb") )
 
 	return targets
 end
