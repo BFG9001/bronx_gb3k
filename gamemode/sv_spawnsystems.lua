@@ -95,7 +95,6 @@ function GM:SpawnLootDrop(count)
 		local Rand = math.random(1, table.Count(spawnData))
 
 		local weaponChance = math.random(1, 100)
-		local lootitem = 
 		if weaponChance <= 7 then 
 			lootitem = ents.Create(table.Random(WeaponLoot))
 		else
