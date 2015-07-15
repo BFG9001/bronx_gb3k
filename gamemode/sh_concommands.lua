@@ -33,7 +33,6 @@ hook.Add("PlayerBindPress", "Bronx_DropWeapon_Binder", function(ply, bind, press
 		if bind == "+menu" and pressed then
 			--PlayerForceDropWeapon(ply)
 			RunConsoleCommand("bronx_dropweapon")
-			return true
 		end
 	end)
 
