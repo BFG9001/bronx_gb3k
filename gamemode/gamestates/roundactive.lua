@@ -80,7 +80,7 @@ end
 function GAMESTATE:HUDPaint()
 	local width, height = draw.SimpleTextOutlined("Time Remaining: " .. GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 2, Color(0,0,0) )
 	draw.SimpleTextOutlined("Points: " .. tostring(LocalPlayer():Frags()), "BronxHUDComic", 5, 8 + height, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 1, Color(0,0,0))
-	draw.SimpleTextOutlined("Boomboxes Left: " .. GetGlobalInt("Bronx_RadiosLeft", 5), "BronxHUDCoolvetica", ScrW(), 5, Color(255,255,255), TEXT_ALIGN_RIGHT, TEXT_ALIGN_BOTTOM, 2, Color(0,0,0) )
+	draw.SimpleTextOutlined("Boomboxes Left: " .. GetGlobalInt("Bronx_RadiosLeft", 5), "BronxHUDCoolvetica", ScrW() - 5, 5, Color(255,255,255), TEXT_ALIGN_RIGHT, TEXT_ALIGN_BOTTOM, 2, Color(0,0,0) )
 end
 
 function GAMESTATE:EntityRemoved(ent)
