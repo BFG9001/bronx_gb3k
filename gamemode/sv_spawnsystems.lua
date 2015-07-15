@@ -70,7 +70,7 @@ end
 local ItemTable = {
 	"item_ammo_pistol_large",
 	--"item_ammo_ar2_large",
-	"item_ammo_pistol_large",
+	"item_ammo_pistol",
 	"item_ammo_pistol",
 	"item_box_buckshot",
 	"item_box_buckshot",
@@ -95,3 +95,9 @@ function GM:SpawnLootDrop(count)
 	 
 	end
 end
+
+hook.Add("OnEntityCreated", "Bronx_LargeAmmoColorer", function(ent)
+		if string.StartWith(ent:GetClass(), "item") and string.EndsWith(ent:GetClass(), "large") then
+			ent:SetColor(Color(125,255,125))
+		end
+	end)

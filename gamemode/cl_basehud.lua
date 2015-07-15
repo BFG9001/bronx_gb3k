@@ -5,6 +5,12 @@ surface.CreateFont("BronxHUDCoolvetica", {
 	size = .055 * ScrH(),
 	weight = 775
 	})
+surface.CreateFont("BronxHUDComic", {
+	font = "Comic Sans MS",
+	size = .025 * ScrH(),
+	italic = true,
+	weight = 775
+	})
 
 local FlatRed = Color(231, 76, 60)
 local FlatBlue = Color(65,131,215)

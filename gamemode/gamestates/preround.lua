@@ -8,9 +8,12 @@ function GAMESTATE:StateBegin()
 	--print"preround begun"
 	SetUniTimer(self.PreRoundTime)
 	for k, v in pairs(player.GetAll()) do
+		v:KillSilent()
+		v:Spawn()
 		if SERVER then v:SetFrags(0) end
 	end
 	game.CleanUpMap()
+	hook.Call("SpawnLootDrop", GAMEMODE, #GAMEMODE.MAPDATA.LootSpawn * (2/3))
 end
 
 function GAMESTATE:Think()
@@ -40,7 +43,8 @@ function GAMESTATE:StateFinish()
 end
 
 function GAMESTATE:HUDPaint()
-	draw.SimpleText("Time before Riot starts: " .. GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 1, Color(0,0,0) )
+	local width, height = draw.SimpleText("Time before Riot starts: " .. GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 2, Color(0,0,0) )
+	draw.SimpleText("Weapons and supplies you collect now will be usable during the Riot!", "BronxHUDComic", 5, 5 + height, Color(255,255,255), TEXT_ALIGN_LEFT,TEXT_ALIGN_BOTTOM)
 end
 
 
