@@ -6,7 +6,7 @@ GAMESTATE.RoundTime = 600
 
 GAMESTATE.NPCSpawnDelay = 15
 GAMESTATE.MaxNPCs = 55
-GAMESTATE.NPCBaseAmount = 7
+GAMESTATE.NPCBaseAmount = 8
 
 if game.SinglePlayer() then GAMESTATE.MaxNPCs = 40 end --For optimization reasons
 
