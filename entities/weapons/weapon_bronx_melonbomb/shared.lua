@@ -109,7 +109,7 @@ function SWEP:PrimaryAttack()
 	self:SetNextPrimaryFire(CurTime() + self.Primary.Delay)
 	self.Thrown = true
 	self:SendWeaponAnim(ACT_VM_THROW)
-	self:ThrowMelonBomb()
+	if SERVER then self:ThrowMelonBomb() end
 	local owner = self:GetOwner()
 	timer.Simple(self.Primary.Delay, function()
 		if SERVER then
