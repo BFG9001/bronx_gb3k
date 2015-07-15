@@ -1,5 +1,5 @@
 ENT.Type = "anim"
-ENT.Base = ""
+--ENT.Base = ""
 ENT.PrintName = ""
 ENT.Author = ""
 ENT.Category = ""

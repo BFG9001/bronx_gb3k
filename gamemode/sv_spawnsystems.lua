@@ -72,12 +72,22 @@ local ItemTable = {
 	--"item_ammo_ar2_large",
 	"item_ammo_pistol",
 	"item_ammo_pistol",
+	"item_ammo_pistol",
+	"item_ammo_pistol",
 	"item_box_buckshot",
 	"item_box_buckshot",
+	"item_box_buckshot",
+	"item_box_buckshot",
+	"item_healthvial",
 	"item_healthvial",
 	--"item_healthkit",
 	"item_box_buckshot",
 	"item_battery",
+	"item_battery",
+	"item_battery",
+	"item_ammo_smg1",
+	"item_ammo_smg1",
+	"item_ammo_smg1",
 	"item_ammo_smg1_large",
 	"item_ammo_smg1"
 }
@@ -95,7 +105,7 @@ function GM:SpawnLootDrop(count)
 		local Rand = math.random(1, table.Count(spawnData))
 
 		local weaponChance = math.random(1, 100)
-		if weaponChance <= 7 then 
+		if weaponChance <= 8 then 
 			lootitem = ents.Create(table.Random(WeaponLoot))
 		else
 			lootitem = ents.Create(table.Random(ItemTable))
