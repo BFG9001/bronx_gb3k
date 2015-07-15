@@ -21,9 +21,11 @@ end
 local function DropWeapon(ply)
 	PlayerForceDropWeapon(ply)
 end
-end --if SERVER then
+
 --concommand.Add("+menu", DropWeapon, nil, FCVAR_CLIENTCMD_CAN_EXECUTE)
 concommand.Add("bronx_dropweapon", DropWeapon, nil, FCVAR_CLIENTCMD_CAN_EXECUTE)
+end --if SERVER then
+
 
 if CLIENT then
 hook.Add("PlayerBindPress", "Bronx_DropWeapon_Binder", function(ply, bind, pressed)
