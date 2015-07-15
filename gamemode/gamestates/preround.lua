@@ -15,7 +15,7 @@ function GAMESTATE:StateBegin()
 		end
 	end
 	game.CleanUpMap()
-	hook.Call("SpawnLootDrop", GAMEMODE, #GAMEMODE.MAPDATA.LootSpawn * (2/3))
+	if SERVER then hook.Call("SpawnLootDrop", GAMEMODE, #GAMEMODE.MAPDATA.LootSpawn * (2/3)) end
 end
 
 function GAMESTATE:Think()
