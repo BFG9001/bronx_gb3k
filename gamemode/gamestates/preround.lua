@@ -15,7 +15,7 @@ function GAMESTATE:StateBegin()
 		end
 	end
 	game.CleanUpMap()
-	if SERVER then hook.Call("SpawnLootDrop", GAMEMODE, #GAMEMODE.MAPDATA.LootSpawn * (2/3)) end
+	if SERVER then GAMEMODE:SpawnLootDrop(#GAMEMODE.MAPDATA.LootSpawn * (2/3)) end
 end
 
 function GAMESTATE:Think()
@@ -45,8 +45,8 @@ function GAMESTATE:StateFinish()
 end
 
 function GAMESTATE:HUDPaint()
-	local width, height = draw.SimpleText("Time before Riot starts: " .. GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 2, Color(0,0,0) )
-	draw.SimpleText("Weapons and supplies you collect now will be usable during the Riot!", "BronxHUDComic", 5, 5 + height, Color(255,255,255), TEXT_ALIGN_LEFT,TEXT_ALIGN_BOTTOM)
+	local width, height = draw.SimpleTextOutlined("Time before Riot starts: " .. GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 2, Color(0,0,0) )
+	draw.SimpleTextOutlined("Weapons and supplies you collect now will be usable during the Riot!", "BronxHUDComic", 5, 8 + height, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 1, Color(0,0,0))
 end
 
 
