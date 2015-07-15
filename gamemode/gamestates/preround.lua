@@ -1,5 +1,5 @@
 local GAMESTATE = {}
-RunConsoleCommand("sv_skyname", "sky_day01_01")
+
 GAMESTATE.Identifier = "PreRound"
 
 GAMESTATE.PreRoundTime = 105

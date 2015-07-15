@@ -116,13 +116,14 @@ function GAMESTATE:OnNPCKilled(npc, attack, inflict)
 	end
 end
 
+local function trunc(str) if string.len(str) > 10 then return string.sub(str, 1, 7).."..." else return str end end
 function GAMESTATE:EntityTakeDamage(ent, dmg)
 	if ent.IsBronxRadio and (not ent.DestroyedBy) then
 		if dmg:GetDamage() >= ent:Health() then
 			if dmg:GetAttacker():IsPlayer() then
 				ent.DestroyedBy = dmg:GetAttacker()
 				dmg:GetAttacker():AddFrags(125)
-				PrintMessage(HUD_PRINTCENTER, dmg:GetAttacker():Nick() .. " destroyed a Blaster 3000 Boombox!" )
+				PrintMessage(HUD_PRINTCENTER, trunc(dmg:GetAttacker():Nick()) .. " destroyed a Blaster 3000 Boombox!" )
 				BroadcastLua( 'surface.PlaySound("buttons/blip1.wav")' )
 			end
 		end

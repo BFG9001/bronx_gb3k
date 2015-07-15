@@ -27,6 +27,6 @@ function GM:SetupMapData()
 		Error("[BRONX] Map setup error! You are using a map that has no setup files, or is not a default map. Please switch to a default map or create the setup files in data/bronx_mapsetup/<mapname here>/ using the weapon_mapsetup_tool.")
 	end
 	for k, v in pairs(GAMEMODE.MAPDATA) do
-		PrintTable(v)
+		--PrintTable(v)
 	end
 end

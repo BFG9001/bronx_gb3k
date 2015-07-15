@@ -56,9 +56,9 @@ end
 function GM:SetState(identifier) --USE THIS WHENEVER YOU TRANSITION BETWEEN STATES
 	if SERVER then print("Server Set State") end
 	if CLIENT then print("Client Set State") end
-	print(GAMEMODE.GameStates[identifier])
+	--print(GAMEMODE.GameStates[identifier])
 	if not GAMEMODE.GameStates[identifier] then identifier = "Debug" end
-	print("State changed to " .. identifier)
+	--print("State changed to " .. identifier)
 	if SERVER then hook.Call("StateFinish", GAMEMODE, nil ) end
 	SetGlobalString(CURRENT_GAMESTATE, identifier or "Debug")
 	if SERVER then hook.Call("StateBegin", GAMEMODE, nil ) end
