@@ -11,7 +11,7 @@ function PlayerForceDropWeapon(ply, wep)
 		--NewWeapon:SetClip2(dropWep:Clip2())
 		NewWeapon:SetPos(ply:GetShootPos())
 		NewWeapon:SetAngles(ply:GetAngles())
-		NewWeapon:SetOwner(ply)
+		NewWeapon.Owner = ply
 		NewWeapon:Spawn()
 
 		NewWeapon:GetPhysicsObject():SetVelocity(ply:GetAimVector() * 200)
