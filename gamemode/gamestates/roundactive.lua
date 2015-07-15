@@ -4,7 +4,7 @@ GAMESTATE.Identifier = "RoundActive"
 
 GAMESTATE.RoundTime = 600
 
-GAMESTATE.NPCSpawnDelay = 20
+GAMESTATE.NPCSpawnDelay = 15
 GAMESTATE.MaxNPCs = 55
 GAMESTATE.NPCBaseAmount = 7
 
