@@ -7,7 +7,7 @@ surface.CreateFont("BronxHUDCoolvetica", {
 	})
 surface.CreateFont("BronxHUDComic", {
 	font = "Comic Sans MS",
-	size = .025 * ScrH(),
+	size = .03 * ScrH(),
 	italic = true,
 	weight = 775
 	})

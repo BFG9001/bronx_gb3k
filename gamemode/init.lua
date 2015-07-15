@@ -89,3 +89,6 @@ function GM:PlayerSetModel(ply)
     ply:SetModel(player_manager.TranslatePlayerModel(table.Random(playermodels)))
 end
 
+function GM:OnNPCKilled(npc, att, inflict)
+
+end

@@ -1,8 +1,8 @@
 local GAMESTATE = {}
-
+RunConsoleCommand("sv_skyname", "sky_day01_01")
 GAMESTATE.Identifier = "PreRound"
 
-GAMESTATE.PreRoundTime = 60
+GAMESTATE.PreRoundTime = 105
 
 function GAMESTATE:StateBegin()
 	--print"preround begun"
@@ -15,7 +15,11 @@ function GAMESTATE:StateBegin()
 		end
 	end
 	game.CleanUpMap()
-	if SERVER then GAMEMODE:SpawnLootDrop(#GAMEMODE.MAPDATA.LootSpawn * (2/3)) end
+	if SERVER then 
+		timer.Simple(0, function()
+		GAMEMODE:SpawnLootDrop(#GAMEMODE.MAPDATA.LootSpawn * (3/4)) 
+		end)
+	end
 end
 
 function GAMESTATE:Think()
