@@ -1,22 +1,35 @@
+print("Eastereggs Loaded")
 local masks = {
-	Material("sprites/bronx/easteregg/asset.png"),
-	Material("sprites/bronx/easteregg/pao.png"),
-	Material("sprites/bronx/easteregg/shia.png"),
-	Material("sprites/bronx/easteregg/thatcat.png")
+	"sprites/bronx/easteregg/asset.png",
+	"sprites/bronx/easteregg/pao.png",
+	"sprites/bronx/easteregg/shia.png",
+	"sprites/bronx/easteregg/thatcat.png"
 }
 
 hook.Add("OnEntityCreated", "Bronx_EasterEgg_Masks", function(ent)
+		--print"entitycreated called"
 		local chance = math.random(1,100)
-		if ent.IsBronxCitizen and (chance < 50) then
+		--print(ent.IsBronxCitizen)
+		if string.StartWith(ent:GetClass(), "npc_bronx") and (chance < 21) then
+			print("Easter Egg hatched.")
 			ent.BronxEasterEggMask = table.Random(masks)
-			hook.Add("PostDrawOpaqueRenderables", ent, function(depth, skybox)
-					local npc = ent
-					local att = npc:GetAttachment(npc:LookupAttachment("eyes"))
-					if not att then return end
-					cam.Start3D2D(att.Pos + (att.Ang:Forward() * 7), att.Ang * -1, .5)
-						surface.SetMaterial(npc.BronxEasterEggMask)
-						surface.DrawTexturedRect(-64, -64, 128, 128)
-					cam.End3D2D()
-				end)
+
 		end
 	end)
+
+hook.Add("PostDrawOpaqueRenderables", "Bronx_RenderEasterEggs", function(depth, skybox)
+	for k, npc in pairs(ents.FindByClass("npc_*")) do
+		if not npc.BronxEasterEggMask then continue end
+		local att = npc:GetAttachment(npc:LookupAttachment("eyes"))
+		if att then
+			render.SetMaterial(Material(npc.BronxEasterEggMask))
+			render.DrawSprite(att.Pos + (att.Ang:Forward() * 5), 16, 16, Color(255,255,255))
+		end
+	end
+end)
+
+--[[		cam.Start3D2D(att.Pos + (att.Ang:Forward() * 7), att.Ang * -1, .5)
+			surface.SetMaterial(npc.BronxEasterEggMask)
+			surface.DrawTexturedRect(-64, -64, 128, 128)
+		cam.End3D2D()
+--]]
