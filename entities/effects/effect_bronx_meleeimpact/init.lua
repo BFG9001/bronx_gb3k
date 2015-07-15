@@ -1,8 +1,8 @@
 AddCSLuaFile()
-local Flare = Material( "sprites/bronx/powbubble.png" )
+local Flare = Material( "sprites/bronx/biff.png" )
 
 
-local LifeTime = 0.2
+local LifeTime = 0.1
 
 /*---------------------------------------------------------
 	EFFECT:Init(data)
@@ -38,5 +38,5 @@ function EFFECT:Render()
 	//cam.End3D2D()
 	
 	render.SetMaterial( Flare );
-	render.DrawSprite( self.Origin, 20, 20, Color(255,255,255,255*((self.DieTime-CurTime())/LifeTime)) );
+	render.DrawSprite( self.Origin, 25, 25, Color(255,255,255,255*((self.DieTime-CurTime())/LifeTime)) );
 end

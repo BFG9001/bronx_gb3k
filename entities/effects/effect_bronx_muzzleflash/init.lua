@@ -24,8 +24,16 @@ function EFFECT:Render()
 	render.DrawSprite( self:GetTracerShootPos(self.Origin, self.WeaponEnt, self.Attachment ), self.size or 30, self.size or 30, Color(255,255,255,225))
 end
 
+--[[
 function EFFECT:Think()
-	self.Life = self.Life + FrameTime() * 7.5
-	self.size = 40 * ( 1 - self.Life )	
+	self.Life = self.Life + FrameTime() * 10
+	self.size = math.random(10,25)
+	return (self.Life < 1)	
+end
+--]]
+
+function EFFECT:Think()
+	self.Life = self.Life + FrameTime() * 16
+	self.size = math.random(7,25)	
 	return (self.Life < 1)	
 end

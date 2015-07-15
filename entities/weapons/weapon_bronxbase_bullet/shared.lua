@@ -5,7 +5,7 @@ SWEP.Wattle 					= true
 ---------
 SWEP.PrintName 					= "Wattle Bronx Bullet Base"
 SWEP.Category 					= "Wattle"
-SWEP.Base 						= "weapon_wattlebase_bronx"
+SWEP.Base 						= "weapon_bronxbase"
 SWEP.Spawnable 					= false
 SWEP.AdminOnly 					= false
 SWEP.m_WeaponDeploySpeed 		= 1
