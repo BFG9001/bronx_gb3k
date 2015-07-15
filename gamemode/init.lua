@@ -95,6 +95,7 @@ end
 
 hook.Add("KeyPress", "Bronx_SpectateCycler", function(ply, key)
     if (key == IN_ATTACK) and !ply:Alive() then
+        --[[ -- I'll fix this later
         --print("Spectate")
         local specTable = player.GetAll()
         ply.SpectateIndex = ply.SpectateIndex or 1
@@ -102,5 +103,7 @@ hook.Add("KeyPress", "Bronx_SpectateCycler", function(ply, key)
         ply:Spectate(OBS_MODE_CHASE)
         ply:SpectateEntity(specEnt)
         ply.SpectateIndex = specKey
+        --]]
+        ply:Spectate(OBS_MODE_ROAMING)
     end
 end)
