@@ -2,9 +2,9 @@ AddCSLuaFile()
 
 local client_files = {"cl_postprocess.lua", "cl_basehud.lua"}
 
-local server_files = {"sv_mapsetup.lua", "sv_concommands.lua", "sv_equipment.lua", "sv_spawnsystems.lua"}
+local server_files = {"sv_mapsetup.lua", "sv_equipment.lua", "sv_spawnsystems.lua"}
 
-local shared_files = {"gamestates/debug.lua", "gamestates/preround.lua"}
+local shared_files = {"gamestates/debug.lua", "sh_concommands.lua", "gamestates/preround.lua"}
 
 
 

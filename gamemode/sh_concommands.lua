@@ -1,3 +1,4 @@
+if SERVER then
 function PlayerForceDropWeapon(ply, wep)
 	local dropWep = wep or ply:GetActiveWeapon()
 	ply:ConCommand("lastinv")
@@ -20,12 +21,17 @@ end
 local function DropWeapon(ply)
 	PlayerForceDropWeapon(ply)
 end
+end --if SERVER then
 --concommand.Add("+menu", DropWeapon, nil, FCVAR_CLIENTCMD_CAN_EXECUTE)
-concommand.Add("dropweapon", DropWeapon, nil, FCVAR_CLIENTCMD_CAN_EXECUTE)
+concommand.Add("bronx_dropweapon", DropWeapon, nil, FCVAR_CLIENTCMD_CAN_EXECUTE)
+
+if CLIENT then
 hook.Add("PlayerBindPress", "Bronx_DropWeapon_Binder", function(ply, bind, pressed)
 		if not IsValid(ply) then return end
 		if bind == "+menu" and pressed then
-			PlayerForceDropWeapon(ply)
+			--PlayerForceDropWeapon(ply)
+			RunConsoleCommand("bronx_dropweapon")
+			return true
 		end
 	end)
 
@@ -34,3 +40,4 @@ local function ShowRadioMenu()
 
 end
 
+end
