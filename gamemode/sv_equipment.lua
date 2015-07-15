@@ -5,7 +5,7 @@ GM.SpawnWeapons["Primary"] = {"weapon_bronx_caws870", "weapon_bronx_ma41", "weap
 GM.SpawnWeapons["Secondary"] = {"weapon_bronx_glok17"}
 
 function GM:PlayerLoadout( ply )
-	ply:Give(table.Random(self.SpawnWeapons["Primary"]))
+	--ply:Give(table.Random(self.SpawnWeapons["Primary"]))
 	ply:Give(table.Random(self.SpawnWeapons["Secondary"]))
     ply:StripAmmo()
     hook.Call("PlayerLoadoutAmmo", GAMEMODE, ply)

@@ -15,7 +15,7 @@ function GAMESTATE:StateBegin()
 		end
 	end
 	game.CleanUpMap()
-	if SERVER then GAMEMODE:SpawnLootDrop(#GAMEMODE.MAPDATA.LootSpawn * (2/3)) end
+	if SERVER then GAMEMODE:SpawnLootDrop(#GAMEMODE.MAPDATA.LootSpawn * (1/2)) end
 end
 
 function GAMESTATE:Think()

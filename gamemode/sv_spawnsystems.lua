@@ -81,6 +81,12 @@ local ItemTable = {
 	"item_ammo_smg1_large",
 	"item_ammo_smg1"
 }
+local WeaponLoot = {
+	"weapon_bronx_caws870", 
+	"weapon_bronx_ma41",
+	"weapon_bronx_glok17",
+	"weapon_bronx_mack11"
+}
 function GM:SpawnLootDrop(count)
 		local spawnData = GAMEMODE.MAPDATA.LootSpawn
 		count = math.min(count, table.Count(spawnData))
@@ -88,7 +94,13 @@ function GM:SpawnLootDrop(count)
 	
 		local Rand = math.random(1, table.Count(spawnData))
 
-		local lootitem = ents.Create(table.Random(ItemTable))
+		local weaponChance = math.random(1, 100)
+		local lootitem = 
+		if weaponChance <= 7 then 
+			lootitem = ents.Create(table.Random(WeaponLoot))
+		else
+			lootitem = ents.Create(table.Random(ItemTable))
+		end
 		lootitem:SetPos(spawnData[Rand].Pos)
 		lootitem:SetAngles(spawnData[Rand].Ang)
 		lootitem:Spawn()
