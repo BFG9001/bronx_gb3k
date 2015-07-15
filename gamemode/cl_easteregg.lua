@@ -11,7 +11,7 @@ hook.Add("OnEntityCreated", "Bronx_EasterEgg_Masks", function(ent)
 		local chance = math.random(1,100)
 		--print(ent.IsBronxCitizen)
 		if string.StartWith(ent:GetClass(), "npc_bronx") and (chance < 21) then
-			print("Easter Egg hatched.")
+			--print("Easter Egg hatched.")
 			ent.BronxEasterEggMask = table.Random(masks)
 
 		end
