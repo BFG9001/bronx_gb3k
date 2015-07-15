@@ -92,3 +92,15 @@ end
 function GM:OnNPCKilled(npc, att, inflict)
 
 end
+
+hook.Add("KeyPress", "Bronx_SpectateCycler", function(ply, key)
+    if (key == IN_ATTACK) and !ply:Alive() then
+        --print("Spectate")
+        local specTable = player.GetAll()
+        ply.SpectateIndex = ply.SpectateIndex or 1
+        local specKey, specEnt = next(specTable, ply.SpectateIndex)
+        ply:Spectate(OBS_MODE_CHASE)
+        ply:SpectateEntity(specEnt)
+        ply.SpectateIndex = specKey
+    end
+end)

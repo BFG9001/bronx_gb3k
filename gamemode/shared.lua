@@ -28,7 +28,9 @@ timer.Create("Bronx_UniversalTimer", 1, 0, function()
 	SetGlobalInt("Bronx_UniversalTimer", math.max(GetGlobalInt("Bronx_UniversalTimer", 0) - 1, 0) ) 
 end)
 
+function GM:StartCommand(ply, cmd)
 
+end
 
 function GM:Initialize()
 	for key, value in pairs(GAMEMODE) do

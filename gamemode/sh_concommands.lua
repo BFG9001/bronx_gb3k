@@ -5,7 +5,7 @@ local function SwitchTo(ply)
 end
 
 function PlayerForceDropWeapon(ply, wep)
-	if #ply:GetWeapons() < 2 then ply:ChatPrint("This is your only weapon!")  return end
+	if #ply:GetWeapons() < 2 then return end
 	local dropWep = wep or ply:GetActiveWeapon()
 	--ply:ConCommand("lastinv")
 	local switchWep = SwitchTo(ply)
@@ -30,18 +30,22 @@ local function DropWeapon(ply)
 	PlayerForceDropWeapon(ply)
 end
 
---concommand.Add("+menu", DropWeapon, nil, FCVAR_CLIENTCMD_CAN_EXECUTE)
+if game.SinglePlayer() then concommand.Add("+menu", DropWeapon, nil, FCVAR_CLIENTCMD_CAN_EXECUTE) end
 concommand.Add("dropweapon", DropWeapon, nil, FCVAR_CLIENTCMD_CAN_EXECUTE)
 end --if SERVER then
 
 
 if CLIENT then
+local CanDrop = true
 hook.Add("PlayerBindPress", "Bronx_DropWeapon_Binder", function(ply, bind, pressed)
 		if not IsValid(ply) then return end
 		if bind == "+menu" and pressed then
-			--PlayerForceDropWeapon(ply)
-			if #ply:GetWeapons() < 2 then return end
-			RunConsoleCommand("dropweapon")
+			timer.Create("Bronx_DropWeaponSpamStopper", .5, 1, function() CanDrop = true end)
+			if CanDrop then
+				if #ply:GetWeapons() < 2 then ply:ChatPrint("This is your only weapon!") surface.PlaySound("buttons/button10.wav") return end
+				RunConsoleCommand("dropweapon")
+			end
+			CanDrop = false
 		end
 	end)
 

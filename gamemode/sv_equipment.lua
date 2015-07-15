@@ -93,4 +93,5 @@ function GM:PlayerCanPickupItem(ply, item)
 	if isInternalAmmoEnt then
 		return needsAmmoType
 	end
+	return true
 end

@@ -5,20 +5,21 @@ GAMESTATE.Identifier = "RoundActive"
 GAMESTATE.RoundTime = 600
 
 GAMESTATE.NPCSpawnDelay = 20
-GAMESTATE.MaxNPCs = 75
-GAMESTATE.NPCBaseAmount = 10
+GAMESTATE.MaxNPCs = 55
+GAMESTATE.NPCBaseAmount = 7
 
 if game.SinglePlayer() then GAMESTATE.MaxNPCs = 40 end --For optimization reasons
 
-GAMESTATE.MaxLoot = 169
+GAMESTATE.MaxLoot = 100
 GAMESTATE.LootDelay = 20
 GAMESTATE.LootBaseAmount = 20
 
 function GAMESTATE:StateBegin()
+	game.CleanUpMap()
 	SetUniTimer(self.RoundTime)
 
 	if SERVER then
-		local calcRadios = 3 + #player.GetAll()
+		local calcRadios = 3 + (#player.GetAll() - 1)
 		GAMEMODE:SpawnBoomBoxes(calcRadios)
 		SetGlobalInt("Bronx_RadiosLeft", #ents.FindByClass("ent_bronx_ghettoblaster"))
 
@@ -40,7 +41,7 @@ end
 
 function GAMESTATE:LootThink()
 	if self.NextLootDrop <= CurTime() then
-		local calcLoot = math.min(self.MaxLoot - #ents.FindByClass("item_*"), 25 + (#player.GetAll() * 3))
+		local calcLoot = math.min(self.MaxLoot - #ents.FindByClass("item_*"), 25)
 		GAMEMODE:SpawnLootDrop(calcLoot)
 		self.NextLootDrop = CurTime() + self.LootDelay
 	end
@@ -64,23 +65,20 @@ function GAMESTATE:Think()
 	if GetGlobalInt("Bronx_RadiosLeft", #ents.FindByClass("ent_bronx_ghettoblaster")) < 1 then
 		self:RoundWin()
 	end
-	if GetUniTimer() == 0 then
+	local timeleft, timeset = GetUniTimer()
+	if timeleft == 0 and (timeset + 1 < CurTime()) then
 		self:RoundLoss()
 	end
 end
 
 function GAMESTATE:StateFinish()
-	if SERVER then
-		for k, v in pairs(ents.FindByClass("npc_*")) do
-			v:TakeDamage(99999)
-		end
-	end
+
 end
 
 function GAMESTATE:HUDPaint()
 	local width, height = draw.SimpleTextOutlined("Time Remaining: " .. GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 2, Color(0,0,0) )
-	draw.SimpleTextOutlined("Points: " .. tostring(LocalPlayer():Frags()), "BronxHUDComic", 5, 8 + height, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 1, Color(0,0,0))
-	draw.SimpleTextOutlined("Boomboxes Left: " .. GetGlobalInt("Bronx_RadiosLeft", 5), "BronxHUDCoolvetica", ScrW() - 5, 5, Color(255,255,255), TEXT_ALIGN_RIGHT, TEXT_ALIGN_BOTTOM, 2, Color(0,0,0) )
+	width, height2 = draw.SimpleTextOutlined("Boomboxes Left: " .. GetGlobalInt("Bronx_RadiosLeft", 5), "BronxHUDCoolvetica", 5, 8 + height, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 2, Color(0,0,0) )
+	draw.SimpleTextOutlined("Points: " .. tostring(LocalPlayer():Frags()), "BronxHUDComic", 5, 10 + height + height2, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 1, Color(0,0,0))
 end
 
 function GAMESTATE:EntityRemoved(ent)
@@ -90,24 +88,26 @@ function GAMESTATE:EntityRemoved(ent)
 end
 
 
-local function CheckPlayers()
-	local alive = 0
+function GAMESTATE:CheckPlayers()
+	local alive = false
 	for k, v in pairs(player.GetAll()) do 
 		if IsValid(v) and v:Alive() then
-			alive = alive + 1
+			alive = true
 		end
 	end
-	if alive < 1 then
+	if not alive then
 		self:RoundLoss()
 	end
 end
-function GAMESTATE:PostPlayerDeath(ply)
-	CheckPlayers()
+function GAMESTATE:DoPlayerDeath(ply)
+	timer.Simple(0, function()
+		self:CheckPlayers()
+	end)
 end
 
 function GAMESTATE:PlayerDisconnected(ply)
 	ply:KillSilent()
-	CheckPlayers()
+	self:CheckPlayers()
 end
 
 function GAMESTATE:OnNPCKilled(npc, attack, inflict)

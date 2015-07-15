@@ -7,7 +7,7 @@ surface.CreateFont("BronxHUDCoolvetica", {
 	})
 surface.CreateFont("BronxHUDComic", {
 	font = "Comic Sans MS",
-	size = .035 * ScrH(),
+	size = .032 * ScrH(),
 	italic = true,
 	weight = 775
 	})
@@ -68,6 +68,7 @@ end
 
 local suppressElements = {
 	"CHudHealth",
+	"CHudDamageIndicator",
 	"CHudBattery"
 }
 hook.Add("HUDShouldDraw", "Bronx_HL2HUDSuppress", function(element)
