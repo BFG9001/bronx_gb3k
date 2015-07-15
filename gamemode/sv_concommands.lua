@@ -20,11 +20,17 @@ end
 local function DropWeapon(ply)
 	PlayerForceDropWeapon(ply)
 end
-concommand.Add("+menu", DropWeapon, nil, FCVAR_CLIENTCMD_CAN_EXECUTE)
+--concommand.Add("+menu", DropWeapon, nil, FCVAR_CLIENTCMD_CAN_EXECUTE)
 concommand.Add("dropweapon", DropWeapon, nil, FCVAR_CLIENTCMD_CAN_EXECUTE)
-
+hook.Add("PlayerBindPress", "Bronx_DropWeapon_Binder", function(ply, bind, pressed)
+		if not IsValid(ply) then return end
+		if bind == "+menu" and pressed then
+			PlayerForceDropWeapon(ply)
+		end
+	end)
 
 
 local function ShowRadioMenu()
 
 end
+
