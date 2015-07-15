@@ -2,17 +2,9 @@
 {
 	"base"		"base"
 	"title"		"The Bronx: Ghetto Blaster 3000"
-	"maps"		"^bronx_"
+	"maps"		"sh_lockdown"
 	"menusystem"	"1"
 	"settings"
 	{
-		1
-		{
-			"name"		"bronx_dynamicflashlight"
-			"text"		"Toggle Dynamic Flashlights"
-			"help"		"Set to 1 to make flashlights tied to gun movement"
-			"type"		"Checkbox"
-			"default"	"1"
-		}
 	}
 }
