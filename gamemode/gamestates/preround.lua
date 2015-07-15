@@ -35,16 +35,7 @@ function GAMESTATE:StateFinish()
 end
 
 function GAMESTATE:HUDPaint()
-local triangle = {
-	{ x = 100, y = 200 },
-	{ x = 150, y = 100 },
-	{ x = 200, y = 200 }
-
-}
-	surface.SetDrawColor( 255, 0, 0, 255 )
-	draw.NoTexture()
-	surface.DrawPoly( triangle )
-
+	draw.SimpleText("Time before Riot starts: " .. GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, Color(0,0,0) )
 end
 
 
