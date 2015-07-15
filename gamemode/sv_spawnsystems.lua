@@ -34,7 +34,7 @@ end
 
 function GM:CheckSpot(num, checkTable)
 	checkTable = checkTable or GAMEMODE.MAPDATA.ObjSpawn
-	local pos = checkTable[num]
+	local pos = checkTable[num].Pos
 	local trace = util.TraceLine({start = pos + Vector(0,0,16), endpos = pos})
 	if IsValid(trace.Entity) and trace.Entity:GetClass() == "ent_bronx_ghettoblaster" then
 		return false

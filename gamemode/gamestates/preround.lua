@@ -5,11 +5,12 @@ GAMESTATE.Identifier = "PreRound"
 GAMESTATE.PreRoundTime = 60
 
 function GAMESTATE:StateBegin()
-	print"preround begun"
+	--print"preround begun"
 	SetUniTimer(self.PreRoundTime)
 	for k, v in pairs(player.GetAll()) do
 		if SERVER then v:SetFrags(0) end
 	end
+	game.CleanUpMap()
 end
 
 function GAMESTATE:Think()
