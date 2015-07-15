@@ -26,16 +26,17 @@ function GAMESTATE:StateFinish()
 					ply:SetPos(spawnData.Pos)
     				ply:SetEyeAngles(spawnData.Ang)
     				ply:SetHealth(ply:GetMaxHealth())
-    	else
+    	elseif SERVER then
     		ply:Spawn()
+    		--hook.Call("PlayerSpawn", GAMEMODE, ply)
     	end
-    	ply:ChatPrint("DEBUG: Preround ended.")
-    	ply:ChatPrint("Gamestate is " .. GetGlobalString(CURRENT_GAMESTATE))
+    	--ply:ChatPrint("DEBUG: Preround ended.")
+    	--ply:ChatPrint("Gamestate is " .. GetGlobalString(CURRENT_GAMESTATE))
 	end
 end
 
 function GAMESTATE:HUDPaint()
-	draw.SimpleText("Time before Riot starts: " .. GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM, 1, Color(0,0,0) )
+	draw.SimpleText("Time before Riot starts: " .. GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_RIGHT, TEXT_ALIGN_BOTTOM, 1, Color(0,0,0) )
 end
 
 
