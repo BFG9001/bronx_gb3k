@@ -1,8 +1,15 @@
 if SERVER then
+local function SwitchTo(ply)
+	local weps = ply:GetWeapons()
+	return weps[1]
+end
+
 function PlayerForceDropWeapon(ply, wep)
-	if #ply:GetWeapons() < 2 then ply:ChatPrint("This is your only weapon!") return end
+	if #ply:GetWeapons() < 2 then return end
 	local dropWep = wep or ply:GetActiveWeapon()
-	ply:ConCommand("lastinv")
+	--ply:ConCommand("lastinv")
+	local switchWep = SwitchTo(ply)
+	ply:SelectWeapon(switchWep:GetClass())
 	--ply:DropWeapon(dropWep)
 	local NewWeapon = ents.Create(dropWep:GetClass())
 		NewWeapon.DroppedWeaponTime = CurTime()
@@ -33,6 +40,7 @@ hook.Add("PlayerBindPress", "Bronx_DropWeapon_Binder", function(ply, bind, press
 		if not IsValid(ply) then return end
 		if bind == "+menu" and pressed then
 			--PlayerForceDropWeapon(ply)
+			if #ply:GetWeapons() < 2 then ply:ChatPrint("This is your only weapon!") return end
 			RunConsoleCommand("dropweapon")
 		end
 	end)
