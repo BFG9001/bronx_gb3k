@@ -32,14 +32,14 @@ function GM:SpawnClusterNPCs(ClusterSize, seedIndex)
 	end
 end
 
-function GM:CheckSpot(num)
-
-	for k, v in pairs(GAMEMODE.MAPDATA.ObjSpawn) do
-		//That obj already exists, return false
-		//print("Conflicting entry")
-		if(v == num) then return false end
+function GM:CheckSpot(num, checkTable)
+	checkTable = checkTable or GAMEMODE.MAPDATA.ObjSpawn
+	local pos = checkTable[num]
+	local trace = util.TraceLine({start = pos + Vector(0,0,16), endpos = pos})
+	if IsValid(trace.Entity) and trace.Entity:GetClass() == "ent_bronx_ghettoblaster" then
+		return false
 	end
-	
+
 	//return true if there is nothing conflicting
 	return true
 
@@ -52,7 +52,7 @@ function GM:SpawnBoomBoxes(count)
 	
 		local Rand = math.random(1, table.Count(spawnData))
 
-		while (!self:CheckSpot(Rand)) do
+		while (!self:CheckSpot(Rand, spawnData)) do
 			Rand = math.random(1, table.Count(spawnData))
 		end
 		
@@ -62,6 +62,36 @@ function GM:SpawnBoomBoxes(count)
 		Obj:SetPos(spawnData[Rand].Pos)
 		Obj:SetAngles(spawnData[Rand].Ang)
 		Obj:Spawn()
+	 
+	end
+end
+
+
+local ItemTable = {
+	"item_ammo_pistol_large",
+	--"item_ammo_ar2_large",
+	"item_ammo_pistol_large",
+	"item_ammo_pistol",
+	"item_box_buckshot",
+	"item_box_buckshot",
+	"item_healthvial",
+	--"item_healthkit",
+	"item_box_buckshot",
+	"item_battery",
+	"item_ammo_smg1_large",
+	"item_ammo_smg1"
+}
+function GM:SpawnLootDrop(count)
+		local spawnData = GAMEMODE.MAPDATA.LootSpawn
+		count = math.min(count, table.Count(spawnData))
+	for i = 1, count do
+	
+		local Rand = math.random(1, table.Count(spawnData))
+
+		local lootitem = ents.Create(table.Random(ItemTable))
+		lootitem:SetPos(spawnData[Rand].Pos)
+		lootitem:SetAngles(spawnData[Rand].Ang)
+		lootitem:Spawn()
 	 
 	end
 end

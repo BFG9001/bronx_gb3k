@@ -1,5 +1,5 @@
 local colorData = {
-	["$pp_colour_brightness"] = .1,
+	["$pp_colour_brightness"] = 0,
 	["$pp_colour_contrast"] = 1,
 	["$pp_colour_colour"] = 2,
 	["$pp_colour_mulr"] = 0,
