@@ -8,9 +8,11 @@ function GAMESTATE:StateBegin()
 	--print"preround begun"
 	SetUniTimer(self.PreRoundTime)
 	for k, v in pairs(player.GetAll()) do
-		v:KillSilent()
-		v:Spawn()
-		if SERVER then v:SetFrags(0) end
+		if SERVER then 
+			v:KillSilent()
+			v:Spawn()
+			v:SetFrags(0) 
+		end
 	end
 	game.CleanUpMap()
 	hook.Call("SpawnLootDrop", GAMEMODE, #GAMEMODE.MAPDATA.LootSpawn * (2/3))
