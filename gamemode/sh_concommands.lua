@@ -1,5 +1,6 @@
 if SERVER then
 function PlayerForceDropWeapon(ply, wep)
+	if #ply:GetWeapons() < 2 then ply:ChatPrint("This is your only weapon!") return end
 	local dropWep = wep or ply:GetActiveWeapon()
 	ply:ConCommand("lastinv")
 	--ply:DropWeapon(dropWep)
@@ -11,7 +12,6 @@ function PlayerForceDropWeapon(ply, wep)
 		--NewWeapon:SetClip2(dropWep:Clip2())
 		NewWeapon:SetPos(ply:GetShootPos())
 		NewWeapon:SetAngles(ply:GetAngles())
-		NewWeapon.Owner = ply
 		NewWeapon:Spawn()
 
 		NewWeapon:GetPhysicsObject():SetVelocity(ply:GetAimVector() * 200)
