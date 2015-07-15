@@ -35,7 +35,7 @@ end
 function GM:SpawnBoomBoxes(count)
 	local spawnData = GAMEMODE.MAPDATA.EnemySpawn
 		count = math.min(count, table.Count(spawnData))
-	for i = 1, num do
+	for i = 1, count do
 	
 		local Rand = math.random(1, table.Count(spawnData))
 

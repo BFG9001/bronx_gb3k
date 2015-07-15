@@ -5,7 +5,7 @@ local function SwitchTo(ply)
 end
 
 function PlayerForceDropWeapon(ply, wep)
-	if #ply:GetWeapons() < 2 then return end
+	if #ply:GetWeapons() < 2 then ply:PrintMessage("This is your only weapon!", HUD_PRINTCENTER)  return end
 	local dropWep = wep or ply:GetActiveWeapon()
 	--ply:ConCommand("lastinv")
 	local switchWep = SwitchTo(ply)
@@ -40,7 +40,7 @@ hook.Add("PlayerBindPress", "Bronx_DropWeapon_Binder", function(ply, bind, press
 		if not IsValid(ply) then return end
 		if bind == "+menu" and pressed then
 			--PlayerForceDropWeapon(ply)
-			if #ply:GetWeapons() < 2 then ply:ChatPrint("This is your only weapon!") return end
+			if #ply:GetWeapons() < 2 then return end
 			RunConsoleCommand("dropweapon")
 		end
 	end)
