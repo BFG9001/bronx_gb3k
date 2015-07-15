@@ -5,11 +5,11 @@ local function SwitchTo(ply)
 end
 
 function PlayerForceDropWeapon(ply, wep)
-	if #ply:GetWeapons() < 2 then ply:PrintMessage("This is your only weapon!", HUD_PRINTCENTER)  return end
+	if #ply:GetWeapons() < 2 then ply:ChatPrint("This is your only weapon!")  return end
 	local dropWep = wep or ply:GetActiveWeapon()
 	--ply:ConCommand("lastinv")
 	local switchWep = SwitchTo(ply)
-	ply:SelectWeapon(switchWep:GetClass())
+	if switchWep then ply:SelectWeapon(switchWep:GetClass()) end
 	--ply:DropWeapon(dropWep)
 	local NewWeapon = ents.Create(dropWep:GetClass())
 		NewWeapon.DroppedWeaponTime = CurTime()

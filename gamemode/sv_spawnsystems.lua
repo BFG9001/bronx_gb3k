@@ -32,14 +32,27 @@ function GM:SpawnClusterNPCs(ClusterSize, seedIndex)
 	end
 end
 
+function GM:CheckSpot(num)
+
+	for k, v in pairs(GAMEMODE.MAPDATA.ObjSpawn) do
+		//That obj already exists, return false
+		//print("Conflicting entry")
+		if(v == num) then return false end
+	end
+	
+	//return true if there is nothing conflicting
+	return true
+
+end
+
 function GM:SpawnBoomBoxes(count)
-	local spawnData = GAMEMODE.MAPDATA.EnemySpawn
+	local spawnData = GAMEMODE.MAPDATA.ObjSpawn
 		count = math.min(count, table.Count(spawnData))
 	for i = 1, count do
 	
 		local Rand = math.random(1, table.Count(spawnData))
 
-		while (!self:CheckObjectives(Rand)) do
+		while (!self:CheckSpot(Rand)) do
 			Rand = math.random(1, table.Count(spawnData))
 		end
 		
