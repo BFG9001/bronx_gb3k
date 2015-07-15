@@ -10,7 +10,7 @@ GAMESTATE.NPCBaseAmount = 8
 
 if game.SinglePlayer() then GAMESTATE.MaxNPCs = 40 end --For optimization reasons
 
-GAMESTATE.MaxLoot = 100
+GAMESTATE.MaxLoot = 125
 GAMESTATE.LootDelay = 20
 GAMESTATE.LootBaseAmount = 20
 
@@ -23,7 +23,7 @@ function GAMESTATE:StateBegin()
 		GAMEMODE:SpawnBoomBoxes(calcRadios)
 		SetGlobalInt("Bronx_RadiosLeft", #ents.FindByClass("ent_bronx_ghettoblaster"))
 
-		local calcLoot = self.MaxLoot * (2/5)
+		local calcLoot = self.MaxLoot * (3/5)
 		GAMEMODE:SpawnLootDrop(calcLoot)
 		self.NextLootDrop = CurTime() + 45
 
