@@ -9,7 +9,7 @@ Melee: Swing, Throw1, Throwitem,
 
 
 
-
+--[[
 if(SERVER) then
 	resource.AddFile("sound/bronx/watchwhereyouwalkin2.wav")
 	resource.AddFile("sound/bronx/whatyousay.wav")
@@ -22,6 +22,7 @@ if(SERVER) then
 	resource.AddFile("sound/bronx/whatchugonnado.wav")
 	resource.AddFile("sound/bronx/whatdidyousay.wav")
 end
+--]]
 
 ENT.NextAttack = CurTime()
 
