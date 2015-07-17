@@ -38,7 +38,7 @@ function GM:PlayerCanPickupWeapon(ply, wep)
 	return true
 end
 
-local MAXARMOR = 30
+local MAXARMOR = 50
 hook.Add("Think", "Bronx_RestrictMaxArmor", function()
 		for k, v in pairs(player.GetAll()) do
 			v:SetArmor(math.min(v:Armor(), MAXARMOR))

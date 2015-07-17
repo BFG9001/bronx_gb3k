@@ -112,7 +112,7 @@ SWEP.VElements = {}
 SWEP.WElements = {}
 
 
-SWEP.MeleeWepStunChancePercent = 10
+SWEP.MeleeWepStunChancePercent = 25
 SWEP.HitSound = Sound("weapons/crowbar/crowbar_impact1.wav")
 
 function SWEP:Reload()

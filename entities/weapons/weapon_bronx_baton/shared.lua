@@ -60,7 +60,9 @@ SWEP.Primary.Damage 			= 40
 SWEP.Primary.DamageFalloff		= 0.001
 --SWEP.Primary.Sound				= Sound("Weapon_Pistol.NPC_Single")
 SWEP.Primary.NumShots			= 1
-SWEP.Primary.Delay				= .66
+SWEP.Primary.Delay				= .5
+
+SWEP.MeleeWepStunChancePercent = 33
 
 
 SWEP.VMPosOffset 				= Vector(0,0,0)
