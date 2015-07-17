@@ -62,7 +62,7 @@ SWEP.Primary.DamageFalloff		= 0.001
 SWEP.Primary.NumShots			= 1
 SWEP.Primary.Delay				= .5
 
-SWEP.MeleeWepStunChancePercent = 33
+SWEP.MeleeWepStunChancePercent = 75
 
 
 SWEP.VMPosOffset 				= Vector(0,0,0)
