@@ -9,6 +9,12 @@ GM.Loot = {}
 GM.Loot.Weapons = {""}
 GM.Loot.Supply = {""}
 
+local MapHasBeenSetUp = tobool(GM.MAPDATA and GM.MAPDATA.PlayerSpawn and GM.MAPDATA.LootSpawn and GM.MAPDATA.EnemySpawn and GM.MAPDATA.ObjSpawn)
+hook.Add("Think", "Bronx_MapNotSetupNotify", function()
+        if not MapHasBeenSetUp then
+            PrintMessage(HUD_PRINTCENTER, "ERROR: This map has not been set up properly for Bronx! It will not work.")
+        end
+    end)
 
 local function GetRandomSpawn()
 
