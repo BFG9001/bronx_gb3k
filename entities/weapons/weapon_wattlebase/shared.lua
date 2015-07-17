@@ -410,7 +410,7 @@ function WattleEntityRemoved(ent)
 	if(CLIENT) then
 		if(ent.Wattle) and (CurTime() > (WATTLE_JOINED_TIME + 7)) then
 print("DEBUG:   " .. CurTime())
-print("DEBUG:   " .. WATTLE_JOINED_TIME + 5)
+print("DEBUG:   " .. WATTLE_JOINED_TIME + 20)
 			if(ent.VElements) then
 				ent:RemoveModels(ent.VElements)
 			end
