@@ -408,7 +408,8 @@ end
 
 function WattleEntityRemoved(ent)
 	if(CLIENT) then
-		if(ent.Wattle) and (CurTime() > LocalPlayer():GetNWFloat("WATTLE_JOINED_TIME", 0) + 5) then
+		if(ent.Wattle) and (CurTime() > (LocalPlayer():GetNWFloat("WATTLE_JOINED_TIME", 0) + 7)) then
+print("DEBUG:   " .. LocalPlayer():GetNWFloat("WATTLE_JOINED_TIME", 0) + 7)
 			if(ent.VElements) then
 				ent:RemoveModels(ent.VElements)
 			end
