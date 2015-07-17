@@ -6,7 +6,7 @@ ENT.PrintName = "Tyrone"
 ENT.Model = "models/Humans/Group01/Male_01.mdl"
 ENT.StartingHealth = 60
 ENT.AttackDistance = 50
-ENT.AttackDamage = 2
+ENT.AttackDamage = 2.25
 ENT.AttackDelay = .5
 ENT.StunTime = 1.1
 
