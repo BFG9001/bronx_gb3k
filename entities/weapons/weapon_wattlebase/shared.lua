@@ -408,7 +408,7 @@ end
 
 function WattleEntityRemoved(ent)
 	if(CLIENT) then
-		if(ent.Wattle) and (CurTime() > (WATTLE_JOINED_TIME + 7)) then
+		if(ent.Wattle) and (CurTime() > (WATTLE_JOINED_TIME + 30)) then
 			--print("DEBUG:   " .. CurTime())
 			--print("DEBUG:   " .. WATTLE_JOINED_TIME + 30)
 			if(ent.VElements) then
