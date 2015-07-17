@@ -420,7 +420,7 @@ function WattleEntityRemoved(ent)
 end
 hook.Add("EntityRemoved", "WattleEntityRemoved", WattleEntityRemoved)
 
-hook.Add("PlayerInitialSpawn", "WattleClavSetSetJoinTime", function(ply
+hook.Add("PlayerInitialSpawn", "WattleClavSetSetJoinTime", function(ply)
 	ply:SetNWFloat("WATTLE_JOINED_TIME", CurTime())
 end)
 
