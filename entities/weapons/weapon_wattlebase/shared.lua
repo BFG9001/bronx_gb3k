@@ -410,7 +410,7 @@ function WattleEntityRemoved(ent)
 	if(CLIENT) then
 		if(ent.Wattle) and (CurTime() > (LocalPlayer():GetNWFloat("WATTLE_JOINED_TIME", 0) + 7)) then
 print("DEBUG:   " .. CurTime())
-print("DEBUG:   " .. LocalPlayer():GetNWFloat("WATTLE_JOINED_TIME", 0) + 7)
+print("DEBUG:   " .. LocalPlayer():GetNWFloat("WATTLE_JOINED_TIME", 0) + 5)
 			if(ent.VElements) then
 				ent:RemoveModels(ent.VElements)
 			end
@@ -422,7 +422,7 @@ print("DEBUG:   " .. LocalPlayer():GetNWFloat("WATTLE_JOINED_TIME", 0) + 7)
 end
 hook.Add("EntityRemoved", "WattleEntityRemoved", WattleEntityRemoved)
 
-hook.Add("PlayerInitialSpawn", "WattleClavSetSetJoinTime", function(ply)
+hook.Add("InitPostEntity", "WattleClavSetSetJoinTime", function(ply)
 	ply:SetNWFloat("WATTLE_JOINED_TIME", CurTime())
 end)
 
