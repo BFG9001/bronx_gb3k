@@ -406,6 +406,20 @@ function SWEP:OnRemove()
 	self:WatOnRemove()
 end
 
+function WattleEntityRemoved(ent)
+	if(CLIENT) then
+		if(ent.Wattle) then
+			if(ent.VElements) then
+				ent:RemoveModels(ent.VElements)
+			end
+			if(ent.WElements) then
+				ent:RemoveModels(ent.WElements)
+			end
+		end
+	end
+end
+hook.Add("EntityRemoved", "WattleEntityRemoved", WattleEntityRemoved)
+
 function SWEP:Think()
 	self:WatThink()
 	self:WatInterruptedReloadThink()

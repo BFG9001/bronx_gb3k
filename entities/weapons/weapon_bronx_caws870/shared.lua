@@ -175,15 +175,15 @@ function SWEP:Reload()
 	self.Weapon:SendWeaponAnim( ACT_VM_RELOAD )
 
 	self.Owner:SetAnimation( PLAYER_RELOAD )
-	self:GetOwner():GetViewModel():SetPlaybackRate(.5)
+	self:GetOwner():GetViewModel():SetPlaybackRate(1)
 	// Make shotgun shell visible
 	self.Weapon:SetBodygroup(1,0)
 	
 //	self.Weapon:SetNextPrimaryFire(CurTime() + self.Weapon:SequenceDuration() )
 	
-	self:SetFRT(CurTime() + self.Weapon:SequenceDuration()/2)
-	self:SetFAT(CurTime() + self.Weapon:SequenceDuration()/2)
-	self.FAT = (CurTime() + self.Weapon:SequenceDuration()/2)
+	self:SetFRT(CurTime() + self.Weapon:SequenceDuration()/3)
+	self:SetFAT(CurTime() + self.Weapon:SequenceDuration()/3)
+	self.FAT = (CurTime() + self.Weapon:SequenceDuration()/3)
 	if(CLIENT) then
 		self.FRT = (CurTime() + LocalPlayer():GetViewModel():SequenceDuration()/2 - LocalPlayer():Ping()/1000)
 	end

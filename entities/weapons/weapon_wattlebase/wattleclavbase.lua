@@ -405,7 +405,10 @@ if CLIENT then
 
 		for k, v in pairs( tab ) do
 			if (IsValid(v.modelEnt)) then 
+				//print("Removed Model "..v.modelEnt:GetModel())
 				v.modelEnt:Remove()
+			else
+				//print("model not valid")
 			end
 			
 			if (IsValid(v.spriteMaterial)) then 
