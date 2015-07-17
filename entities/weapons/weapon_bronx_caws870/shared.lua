@@ -202,11 +202,11 @@ function SWEP:ReloadShell()
 //	WeaponSound(RELOAD);
 	self:EmitSound("weapons/shotgun/shotgun_reload1.wav")
 	self.Weapon:SendWeaponAnim( ACT_VM_RELOAD );
-	self:GetOwner():GetViewModel():SetPlaybackRate(1.5)
+	self:GetOwner():GetViewModel():SetPlaybackRate(2)
 	
-	self:SetFRT(CurTime() + self.Weapon:SequenceDuration()/2)
-	self:SetFAT(CurTime() + self.Weapon:SequenceDuration()/2)
-	self.FAT = (CurTime() + self.Weapon:SequenceDuration()/2)
+	self:SetFRT(CurTime() + self.Weapon:SequenceDuration()/3)
+	self:SetFAT(CurTime() + self.Weapon:SequenceDuration()/3)
+	self.FAT = (CurTime() + self.Weapon:SequenceDuration()/3)
 	if(CLIENT) then
 		self.FRT = (CurTime() + LocalPlayer():GetViewModel():SequenceDuration() - LocalPlayer():Ping()/1000)
 	end
