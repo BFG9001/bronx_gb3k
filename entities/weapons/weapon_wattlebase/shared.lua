@@ -408,7 +408,7 @@ end
 
 function WattleEntityRemoved(ent)
 	if(CLIENT) then
-		if(ent.Wattle) then
+		if(ent.Wattle) and (CurTime() > 5) then
 			if(ent.VElements) then
 				ent:RemoveModels(ent.VElements)
 			end
