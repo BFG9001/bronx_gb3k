@@ -11,6 +11,10 @@ playerspawns.txt
 --]]
 //If not then THIS WILL NOT WORK PROPERLY
 GM.MAPDATA = {}
+GM.MAPDATA.EnemySpawn = {}
+GM.MAPDATA.LootSpawn = {}
+GM.MAPDATA.ObjSpawn = {}
+GM.MAPDATA.PlayerSpawn = {}
 
 
 function GM:SetupMapData()
@@ -20,10 +24,13 @@ function GM:SetupMapData()
 			GAMEMODE.MAPDATA.LootSpawn = util.JSONToTable(file.Read( filePathEX .. loot.txt, "DATA" ))
 			GAMEMODE.MAPDATA.ObjSpawn = util.JSONToTable(file.Read( filePathEX .. obj.txt, "DATA" ))
 			GAMEMODE.MAPDATA.PlayerSpawn = util.JSONToTable(file.Read( filePathEX .. playerspawns.txt, "DATA" ))
+		Bronx_MapHasBeenSetUp = true
 	elseif file.Exists("gamemodes/" .. engine.ActiveGamemode() .. "/gamemode/sv_default_mapsetup/" .. game.GetMap() .. ".lua", "GAME") then
 		--include("sv_default_mapsetup/" .. game.GetMap() .. ".lua") --fuck man
 		include("../gamemode/sv_default_mapsetup/" .. game.GetMap() .. ".lua")
+		Bronx_MapHasBeenSetUp = true
 	else
+		Bronx_MapHasBeenSetUp = false
 		Error("[BRONX] Map setup error! You are using a map that has no setup files, or is not a default map. Please switch to a default map or create the setup files in data/bronx_mapsetup/<mapname here>/ using the weapon_mapsetup_tool.")
 	end
 	for k, v in pairs(GAMEMODE.MAPDATA) do
