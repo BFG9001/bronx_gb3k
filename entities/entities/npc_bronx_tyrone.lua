@@ -5,7 +5,7 @@ ENT.Spawnable		= true
 ENT.PrintName = "Tyrone"
 ENT.Model = "models/Humans/Group01/Male_01.mdl"
 ENT.StartingHealth = 60
-ENT.AttackDistance = 64
+ENT.AttackDistance = 50
 ENT.AttackDamage = 2.25
 ENT.AttackDelay = .5
 ENT.StunTime = 1.1
@@ -103,7 +103,7 @@ function ENT:MeleeAttack()
 		self.loco:FaceTowards( target:GetPos() )
 
 		local pos = self:GetPos() + self:GetUp() * 50
-		local ang = (target:GetPos() - self:GetPos()):Angle():Forward()
+		local ang = (target:LocalToWorld(target:OBBCenter()) - (self:GetPos() + self:GetUp() * 50)):Angle():Forward()
  
 		local tracedata = {}
 		tracedata.start = pos
