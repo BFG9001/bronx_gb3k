@@ -112,7 +112,7 @@ end
 
 function GAMESTATE:OnNPCKilled(npc, attack, inflict)
 	if IsValid(attack) and attack:IsPlayer() then
-		attack:AddFrags(10)
+		attack:AddFrags(2)
 	end
 end
 
@@ -122,7 +122,7 @@ function GAMESTATE:EntityTakeDamage(ent, dmg)
 		if dmg:GetDamage() >= ent:Health() then
 			if dmg:GetAttacker():IsPlayer() then
 				ent.DestroyedBy = dmg:GetAttacker()
-				dmg:GetAttacker():AddFrags(125)
+				dmg:GetAttacker():AddFrags(50)
 				PrintMessage(HUD_PRINTCENTER, trunc(dmg:GetAttacker():Nick()) .. " destroyed a Blaster 3000 Boombox!" )
 				BroadcastLua( 'surface.PlaySound("buttons/blip1.wav")' )
 			end
@@ -133,9 +133,9 @@ function GAMESTATE:EntityTakeDamage(ent, dmg)
 		ply.Bronx_PointsDamageCounter = ply.Bronx_PointsDamageCounter or 0
 		local dmgcounter = ply.Bronx_PointsDamageCounter
 		dmgcounter = dmgcounter + dmg:GetDamage()
-		while dmgcounter > 75 do
+		while dmgcounter > 100 do
 			ply:AddFrags(1)
-			dmgcounter = dmgcounter - 75
+			dmgcounter = dmgcounter - 100
 		end
 		ply.Bronx_PointsDamageCounter = dmgcounter
 	end
