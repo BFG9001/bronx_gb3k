@@ -37,7 +37,7 @@ ENT.StunTime = 1
 
 
 function ENT:Initialize()
-	self:SetName(self.PrintName)
+	if SERVER then self:SetName(self.PrintName)
 
 	self:SetNWBool("Stunned", false)
 
@@ -48,7 +48,7 @@ function ENT:Initialize()
 	self.loco:SetDeathDropHeight(500)	//default 200
 	self.loco:SetAcceleration(900)		//default 400
 	self.loco:SetDeceleration(900)		//default 400
-	self.loco:SetStepHeight(18)			//default 18
+	self.loco:SetStepHeight(24)			//default 18
 	self.loco:SetJumpHeight(58)		//default 58
 	
 	self.Isjumping = false
@@ -56,6 +56,7 @@ function ENT:Initialize()
 	self.TalkTimer = CurTime()
 
 	self:OnInit()
+	end
 end
 
 function ENT:OnInit()

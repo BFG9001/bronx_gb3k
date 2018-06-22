@@ -42,8 +42,8 @@ function GM:HUDPaint()
 	local text = tostring(LocalPlayer():Health())
 	local foobar, heightAdd = surface.GetTextSize(text)
 	local hpOriginX = (dWidth/10) + (hpLength/2) -- - (surface.GetTextSize(text)/2)
-	local hpOriginY = (H - dHeight * (4/5)) + (hpLength/2) - (heightAdd * (2/3))
-	draw.SimpleText(LocalPlayer():Health(), "BronxHUDCoolvetica", hpOriginX, hpOriginY, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM )
+	local hpOriginY = H - dHeight/2 --(H - dHeight * (4/5)) + (hpLength/2) - (heightAdd * (2/3))
+	draw.SimpleText(LocalPlayer():Health(), "BronxHUDCoolvetica", hpOriginX, hpOriginY, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER	)
 
 	--Armor Element
 	surface.SetDrawColor(230, 126, 34)

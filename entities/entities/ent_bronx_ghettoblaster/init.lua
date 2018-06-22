@@ -33,7 +33,7 @@ function ENT:Initialize()
 	
 	self:SetModel( model )
 	self:PhysicsInit( SOLID_VPHYSICS )
-	self:SetMoveType( MOVETYPE_VPHYSICS )
+	self:SetMoveType( MOVETYPE_NONE )
 	self:SetSolid( SOLID_VPHYSICS )
 	local phys = self:GetPhysicsObject()
 	if (phys:IsValid()) then

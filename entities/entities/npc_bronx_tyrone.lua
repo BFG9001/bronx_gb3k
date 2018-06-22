@@ -13,8 +13,9 @@ ENT.StunTime = 1.1
 ENT.WeaponModels = { "models/weapons/w_knife_t.mdl", "models/props_canal/mattpipe.mdl", "models/weapons/w_crowbar.mdl" }
 
 function ENT:OnInit()
-	self:SetName("Tyrone")
 	if SERVER then --don't ask me why doing this with a CS Model doesn't work
+	self:SetName("Tyrone")
+	
 	self.weaponmodel = ents.Create("prop_physics")
 	self.weaponmodel:SetModel( table.Random(self.WeaponModels))
 	self.weaponmodel:SetParent(self)

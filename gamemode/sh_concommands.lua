@@ -5,7 +5,8 @@ local function SwitchTo(ply)
 end
 
 function PlayerForceDropWeapon(ply, wep)
-	if #ply:GetWeapons() < 2 then return end
+	if ((ply.NextWeaponDropTime or 0) > CurTime()) or (#ply:GetWeapons() < 1) then return end
+	ply.NextWeaponDropTime = CurTime() + 1;
 	local dropWep = wep or ply:GetActiveWeapon()
 	--ply:ConCommand("lastinv")
 	local switchWep = SwitchTo(ply)
@@ -42,7 +43,7 @@ hook.Add("PlayerBindPress", "Bronx_DropWeapon_Binder", function(ply, bind, press
 		if bind == "+menu" and pressed then
 			timer.Create("Bronx_DropWeaponSpamStopper", .5, 1, function() CanDrop = true end)
 			if CanDrop then
-				if #ply:GetWeapons() < 2 then ply:ChatPrint("This is your only weapon!") surface.PlaySound("buttons/button10.wav") return end
+				if false then ply:ChatPrint("This is your only weapon!") surface.PlaySound("buttons/button10.wav") return end
 				RunConsoleCommand("dropweapon")
 			end
 			CanDrop = false

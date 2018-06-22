@@ -49,8 +49,8 @@ function GAMESTATE:StateFinish()
 end
 
 function GAMESTATE:HUDPaint()
-	local width, height = draw.SimpleTextOutlined("Time before Riot starts: " .. GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 2, Color(0,0,0) )
-	draw.SimpleTextOutlined("Weapons and supplies you collect now will be usable during the Riot!", "BronxHUDComic", 5, 8 + height, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 1, Color(0,0,0))
+	local width, height = draw.SimpleTextOutlined("Time before Riot starts: " .. GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP, 2, Color(0,0,0) )
+	draw.SimpleTextOutlined("Weapons and supplies you collect now will be usable during the Riot!", "BronxHUDComic", 5, 8 + height, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP, 1, Color(0,0,0))
 end
 
 

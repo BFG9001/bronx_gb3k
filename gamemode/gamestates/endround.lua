@@ -32,8 +32,8 @@ function GAMESTATE:StateBegin()
 end
 
 function GAMESTATE:HUDPaint()
-	local width, height = draw.SimpleTextOutlined(GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 2, Color(0,0,0) )
-	draw.SimpleTextOutlined("Get Ready for the next round...", "BronxHUDComic", 5, 8 + height, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 1, Color(0,0,0))
+	local width, height = draw.SimpleTextOutlined(GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP, 2, Color(0,0,0) )
+	draw.SimpleTextOutlined("Get Ready for the next round...", "BronxHUDComic", 5, 8 + height, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP, 1, Color(0,0,0))
 	width, height = draw.SimpleTextOutlined("SUCCESS", "BronxHUDCoolvetica", ScrW()/2, ScrH()/2, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 2, Color(0,0,0) )
 	draw.SimpleTextOutlined("MVP: " .. GetGlobalEntity("Bronx_MVP", LocalPlayer()):Nick() .. " with " .. GetGlobalEntity("Bronx_MVP", LocalPlayer()):Frags() .. " points", "BronxHUDComic", ScrW()/2, (ScrH()/2) + height, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 1, Color(0,0,0))
 end
@@ -94,8 +94,8 @@ function GAMESTATE:StateBegin()
 end
 
 function GAMESTATE:HUDPaint()
-	local width, height = draw.SimpleTextOutlined(GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 2, Color(0,0,0) )
-	draw.SimpleTextOutlined("Get Ready for the next round...", "BronxHUDComic", 5, 8 + height, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM, 1, Color(0,0,0))
+	local width, height = draw.SimpleTextOutlined(GetUniTimer(), "BronxHUDCoolvetica", 5, 5, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP, 2, Color(0,0,0) )
+	draw.SimpleTextOutlined("Get Ready for the next round...", "BronxHUDComic", 5, 8 + height, Color(255,255,255), TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP, 1, Color(0,0,0))
 	width, height = draw.SimpleTextOutlined("FAILURE", "BronxHUDCoolvetica", ScrW()/2, ScrH()/2, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 2, Color(0,0,0) )
 	draw.SimpleTextOutlined("LVP: " .. GetGlobalEntity("Bronx_LVP", LocalPlayer()):Nick() .. " with " .. GetGlobalEntity("Bronx_LVP", LocalPlayer()):Frags() .. " points... sucker...", "BronxHUDComic", ScrW()/2, (ScrH()/2) + height, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 1, Color(0,0,0))
 end
