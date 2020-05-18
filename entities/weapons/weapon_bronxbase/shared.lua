@@ -129,6 +129,12 @@ function SWEP:SecondaryAttack() --Melee attack
 	self:GetOwner():LagCompensation(false)
 end
 
+local meleeBlacklist = {
+	--CLuaEffect = true,
+	--C_BaseFlex = true,
+	viewmodel = true,
+	gmod_hands = true
+}
 function SWEP:MeleeAttack()
 	--if CLIENT and not IsFirstTimePredicted() then return end
 	self:GetOwner():ViewPunch( Angle( 3, 3, 15) )
@@ -163,7 +169,10 @@ function SWEP:MeleeAttack()
 			dmginfo:SetDamageForce( self:GetOwner():GetAimVector() * 420 )
 
 		for k, v in pairs( targets ) do
-			if v:IsWeapon() then continue end
+			--print(v:GetClass())
+			if v:IsWeapon() or meleeBlacklist[v:GetClass()] or (v:EntIndex() < 0) then continue end --For some reason Clientside-only effects count as entities. 
+			--Using Classnames to identify Clientside models doesn't work. But I just figured out that you CAN identify them by the commonality that their Entity Indices are all -1.
+			print(v)
 			if IsValid(v) and v.IsBronxCitizen and SERVER then
 				v:BronxMeleeStun()
 				--v:SetVelocity(self:GetOwner():GetAimVector() * 500)

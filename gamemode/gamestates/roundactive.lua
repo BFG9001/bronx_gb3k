@@ -56,7 +56,7 @@ function GAMESTATE:NPCSpawningThink()
 		self.NextNPCWave = CurTime() + self.NPCSpawnDelay
 	end
 end
-
+local nextCheckTime = 0
 function GAMESTATE:Think()
 	if SERVER then
 		self:LootThink()
@@ -68,6 +68,11 @@ function GAMESTATE:Think()
 	local timeleft, timeset = GetUniTimer()
 	if timeleft == 0 and (timeset + 1 < CurTime()) then
 		self:RoundLoss()
+	end
+	--Check to see if any players had unusual deaths (like a silent kill that doesn't trigger the DoPlayerDeathHook)
+	if CurTime() > nextCheckTime then 
+		self:CheckPlayers()
+		nextCheckTime = CurTime() + 10
 	end
 end
 

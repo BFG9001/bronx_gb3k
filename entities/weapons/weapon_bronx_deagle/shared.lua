@@ -47,7 +47,7 @@ SWEP.Secondary.DefaultClip 		= -1
 SWEP.Secondary.Ammo 			= "none"
 SWEP.Secondary.Automatic 		= true
 --Melee stuff
-SWEP.Secondary.Damage = 11
+SWEP.Secondary.Damage = 18
 SWEP.Secondary.Delay = .75
 SWEP.Secondary.Sound = Sound("weapons/slam/throw.wav")
 
@@ -60,7 +60,7 @@ SWEP.Primary.Damage 			= 76
 SWEP.Primary.DamageFalloff		= 0.001
 SWEP.Primary.Sound				= Sound("weapons/p228/p228-1.wav")
 SWEP.Primary.NumShots			= 1
-SWEP.Primary.Delay				= 60/200
+SWEP.Primary.Delay				= 60/360
 SWEP.Primary.Cone				= 0.0033
 SWEP.Primary.ClumpCone			= 0
 SWEP.Primary.Tracer				= 1

@@ -36,7 +36,7 @@ SWEP.SlotPos 					= 1
 SWEP.CSMuzzleFlashes 			= true
 SWEP.CSMuzzleX 					= false
 
-SWEP.Primary.ClipSize			= 30
+SWEP.Primary.ClipSize			= 32
 SWEP.Primary.DefaultClip 		= 120
 SWEP.Primary.Ammo 				= "pistol"
 SWEP.Primary.Automatic 			= true

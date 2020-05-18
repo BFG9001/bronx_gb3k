@@ -70,8 +70,8 @@ end
 local ItemTable = {
 	"item_ammo_pistol_large",
 	--"item_ammo_ar2_large",
-	"item_ammo_pistol",
-	"item_ammo_pistol",
+	"item_ammo_pistol_large",
+	"item_ammo_pistol_large",
 	"item_ammo_pistol",
 	"item_ammo_pistol",
 	"item_box_buckshot",
@@ -87,7 +87,6 @@ local ItemTable = {
 	"item_battery",
 	"item_ammo_smg1",
 	"item_ammo_smg1",
-	"item_ammo_smg1",
 	"item_ammo_smg1_large",
 	"item_ammo_smg1"
 }
@@ -100,7 +99,9 @@ local WeaponLoot = {
 	"weapon_bronx_ma41",
 	"weapon_bronx_sprayk47",
 	"weapon_bronx_glok17",
+	"weapon_bronx_glok17",
 	"weapon_bronx_mack11",
+	"weapon_bronx_deagle",
 	"weapon_bronx_deagle",
 	"weapon_bronx_baton",
 	"weapon_bronx_melonbomb",

@@ -111,7 +111,7 @@ SWEP.ViewModelBoneMods = {}
 SWEP.VElements = {}
 SWEP.WElements = {}
 
-
+SWEP.MeleeImpactDelay = .33
 SWEP.MeleeWepStunChancePercent = 25
 SWEP.HitSound = Sound("weapons/crowbar/crowbar_impact1.wav")
 
@@ -137,10 +137,16 @@ function SWEP:PrimaryAttack() --Melee attack
 	self:GetOwner():LagCompensation(false)
 end
 
+local meleeBlacklist = {
+	--CLuaEffect = true,
+	--C_BaseFlex = true,
+	viewmodel = true,
+	gmod_hands = true
+}
 function SWEP:StrongMeleeAttack()
 	self:GetOwner():SetAnimation(PLAYER_ATTACK1)
 
-	timer.Simple( .33, function() if not IsValid(self) then return end self:SetHoldType(self.HoldType) end)
+	timer.Simple( self.MeleeImpactDelay, function() if not IsValid(self) then return end self:SetHoldType(self.HoldType) end)
 
 	--if SERVER then
 		local radius = 25
@@ -167,7 +173,7 @@ function SWEP:StrongMeleeAttack()
 			dmginfo:SetDamageForce( self:GetOwner():GetAimVector() * 1000 )
 
 		for k, v in pairs( targets ) do
-			if v:IsWeapon() then continue end
+			if v:IsWeapon() or meleeBlacklist[v:GetClass()] or (v:EntIndex() < 0) then continue end
 			if IsValid(v) and v.IsBronxCitizen and SERVER then
 				local stunRandom = math.random(1, 100)
 				if stunRandom <= self.MeleeWepStunChancePercent then
@@ -175,7 +181,7 @@ function SWEP:StrongMeleeAttack()
 				end
 			end
 			if IsValid(v) then 
-				if SERVER then v:EmitSound(self.HitSound) end
+				v:EmitSound(self.HitSound)
 				local trace = util.TraceHull({start = self:GetOwner():GetShootPos(), endpos = v:LocalToWorld(v:OBBCenter()), filter = function(ent) if ent == v then return true end end})
 					local fx = EffectData()
 						fx:SetOrigin(trace.HitPos + Vector(0,0,16))
