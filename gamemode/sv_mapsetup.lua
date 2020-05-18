@@ -18,17 +18,18 @@ GM.MAPDATA.PlayerSpawn = {}
 
 
 function GM:SetupMapData()
-	if file.Exists( FILEPATH .. game.GetMap(), "DATA" ) then
-		local filePathEX = FILEPATH .. game.GetMap()
-			GAMEMODE.MAPDATA.EnemySpawn = util.JSONToTable(file.Read( filePathEX .. enemies.txt, "DATA" ))
-			GAMEMODE.MAPDATA.LootSpawn = util.JSONToTable(file.Read( filePathEX .. loot.txt, "DATA" ))
-			GAMEMODE.MAPDATA.ObjSpawn = util.JSONToTable(file.Read( filePathEX .. obj.txt, "DATA" ))
-			GAMEMODE.MAPDATA.PlayerSpawn = util.JSONToTable(file.Read( filePathEX .. playerspawns.txt, "DATA" ))
+	local filePathEX = FILEPATH .. game.GetMap() .. "/"
+	if file.Exists( filePathEX, "DATA" ) then
+			GAMEMODE.MAPDATA.EnemySpawn = util.JSONToTable(file.Read( filePathEX .. "enemies.txt", "DATA" ))
+			GAMEMODE.MAPDATA.LootSpawn = util.JSONToTable(file.Read( filePathEX .. "loot.txt", "DATA" ))
+			GAMEMODE.MAPDATA.ObjSpawn = util.JSONToTable(file.Read( filePathEX .. "obj.txt", "DATA" ))
+			GAMEMODE.MAPDATA.PlayerSpawn = util.JSONToTable(file.Read( filePathEX .. "playerspawns.txt", "DATA" ))
 		Bronx_MapHasBeenSetUp = true
-	elseif file.Exists("gamemodes/" .. engine.ActiveGamemode() .. "/gamemode/sv_default_mapsetup/" .. game.GetMap() .. ".lua", "GAME") then
+	elseif (file.Exists("gamemodes/bronx_gb3k/content/data/" .. filepathEX, "GAME")) then
 		--include("sv_default_mapsetup/" .. game.GetMap() .. ".lua") --fuck man
-		include("../gamemode/sv_default_mapsetup/" .. game.GetMap() .. ".lua")
-		Bronx_MapHasBeenSetUp = true
+		--include("sv_bronx_default_mapsetup/" .. game.GetMap() .. ".lua")
+		print("rip")
+		--Bronx_MapHasBeenSetUp = true
 	else
 		Bronx_MapHasBeenSetUp = false
 		Error("[BRONX] Map setup error! You are using a map that has no setup files, or is not a default map. Please switch to a default map or create the setup files in data/bronx_mapsetup/<mapname here>/ using the weapon_mapsetup_tool.")

@@ -60,16 +60,16 @@ SWEP.Primary.Damage 			= 50
 SWEP.Primary.DamageFalloff		= 0.001
 SWEP.Primary.Sound				= Sound("Weapon_AK47.Single")
 SWEP.Primary.NumShots			= 1
-SWEP.Primary.Delay				= .125
-SWEP.Primary.Cone				= 0.0015
+SWEP.Primary.Delay				= .12
+SWEP.Primary.Cone				= 0.002
 SWEP.Primary.ClumpCone			= 0
 SWEP.Primary.Tracer				= 1
 SWEP.Primary.TracerName			= "Tracer"
 --SWEP.Primary.MuzzleEffects		= { "effect_bronx_muzzleflash", "effect_wat_muzzle_smoke", "effect_wat_muzzle_sparks" }
 
 SWEP.RecoilPitchAdd 			= 1
-SWEP.RecoilPitchMul 			= .5
-SWEP.RecoilYawAdd 				= 0.6
+SWEP.RecoilPitchMul 			= .35
+SWEP.RecoilYawAdd 				= 0.47
 SWEP.RecoilYawMul 				= 0.1
 
 SWEP.SpreadConeAdd 				= 0.0025

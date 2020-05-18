@@ -31,6 +31,9 @@ function GAMESTATE:PlayerSay(ply, txt, teamC, ded)
 			radio:SetPos(ply:GetEyeTrace().HitPos)
 			radio:Spawn()
 	end
+	if string.StartWith(txt, "!start") then
+		GAMEMODE:SetState("EndRound_Loss")
+	end
 end
 
 function GAMESTATE:DrawHUD()
