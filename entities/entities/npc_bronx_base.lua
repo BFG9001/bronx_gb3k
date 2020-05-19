@@ -165,7 +165,7 @@ function ENT:BronxMeleeStun()
 	self:OnStun()
 	self:SetNWBool("Stunned", true)
 	self:ResetSequence(self.StunAnimSequence or "fear_reaction")
-	timer.Simple(self.StunTime - .1, function() if not IsValid(self) then return end self:SetNWBool("Stunned", false) end)
+	timer.Simple(self.StunTime, function() if not IsValid(self) then return end self:SetNWBool("Stunned", false) end)
 end
 
 function ENT:OnStun()

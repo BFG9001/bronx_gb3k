@@ -9,6 +9,7 @@ ENT.AttackDistance = 50
 ENT.AttackDamage = 2.25
 ENT.AttackDelay = .5
 ENT.StunTime = 1.1
+local meleeSwingTime = .45
 
 ENT.WeaponModels = { "models/weapons/w_knife_t.mdl", "models/props_canal/mattpipe.mdl", "models/weapons/w_crowbar.mdl" }
 
@@ -19,7 +20,7 @@ function ENT:OnInit()
 	self.weaponmodel = ents.Create("prop_physics")
 	self.weaponmodel:SetModel( table.Random(self.WeaponModels))
 	self.weaponmodel:SetParent(self)
-	//weaponmodel:Spawn()
+	--weaponmodel:Spawn()
 	self.weaponmodel:AddEffects(EF_BONEMERGE)
 	end
 	self.RunAnim = false
@@ -31,18 +32,18 @@ function ENT:BehaveUpdate( fInterval )
 
 	if ( !self.BehaveThread ) then return end
 	local quicktrace = util.TraceLine({start = self:GetPos() + Vector(0,0,20), endpos = self:GetPos() + Vector(0,0,20) + (self:GetAngles():Forward() * 24)})
-	if IsValid(quicktrace.Entity) and quicktrace.Entity:GetClass() == "func_breakable" then
+	if IsValid(quicktrace.Entity) and quicktrace.Entity:GetClass() == "func_breakable" then --To go through walkable glass barriers
 		quicktrace.Entity:TakeDamage(100)
 	end
 	
-	if self.NextAttack < CurTime() then
+	if self.NextAttack < CurTime() and not self.Attacking then
 		local ent = ents.FindInSphere( self:GetPos(), 120 )
 		for k,v in pairs( ent ) do
-			//if (self:PlayerCheck(v) || v:IsNPC()) and IsValid(v) then
+			--if (self:PlayerCheck(v) || v:IsNPC()) and IsValid(v) then
 			if !IsValid(v) then return end
-			if (v:IsPlayer() || v:IsNPC() and v:Health() > 0) or v.IsWatermelon then
+			if ((v:IsPlayer() or v:IsNPC()) and v:Health() > 0) or v.IsWatermelon then
 				self.loco:FaceTowards( v:GetPos() )
-				//self.loco:Jump( )
+				--self.loco:Jump( )
 				self.Attacking = true
 				self.StuckTime = nil --Don't use stuck behavior if attacking
 				self:ResetSequence( "swing" )
@@ -50,21 +51,22 @@ function ENT:BehaveUpdate( fInterval )
 				self:SetPlaybackRate( 1 )
 
 				
-				timer.Simple( self:SequenceDuration() + .5, function()
+				timer.Simple( self:SequenceDuration() + meleeSwingTime, function()
 					if IsValid(v) and IsEntity(v) and IsValid(self) then
 						if self:GetPos():Distance(v:GetPos()) > self.AttackDistance + 1 then
-							if not self.RunAnim and (not self.Attacking) then
+							if not self.RunAnim and (not self.Attacking) and (not self:GetNWBool("Stunned", false)) then
 								self:StartActivity( ACT_RUN )
 								self.RunAnim = true
 							end	
 						end
 					end
 				 end)
-				timer.Simple( .5 , function() if IsValid(self) and (self:Health() > 0) then
+				timer.Simple( meleeSwingTime , function() if IsValid(self) and (self:Health() > 0) then
+					self.NextAttack = CurTime() + (self.AttackDelay)
 					self:MeleeAttack()
 						end
 					end)
-				//self.Isjumping = true
+				--self.Isjumping = true
 			end
 		end	
 	end
@@ -88,7 +90,7 @@ function ENT:PlayerCheck(ent)
 	end
 end
 
-//local NextAttack = CurTime()
+--local NextAttack = CurTime()
 
 function ENT:FilterForTrace()
 	return ents.FindByClass( "npc_bronx_tyrone*" )
@@ -96,8 +98,8 @@ end
 
 function ENT:MeleeAttack()
 	if self:GetNWBool("Stunned", false) then return end
-	timer.Simple(.5, function() if not IsValid(self) then return end self.Attacking = false end)
-	if (self.NextAttack > CurTime()) then return end
+	timer.Simple(self:SequenceDuration() - meleeSwingTime, function() if not IsValid(self) then return end self.Attacking = false end)
+	--if (self.NextAttack > CurTime()) then return end
 	local target = self:GetNearestTargetFromTable(self:BuildTargetTable())
 	if IsValid(target) then
 
@@ -116,7 +118,7 @@ function ENT:MeleeAttack()
 	local trace = util.TraceLine( tracedata )
 
 	if trace.Hit and trace.HitNonWorld then
-		if trace.Entity:IsValid() and !(self:GetClass() == trace.Entity:GetClass()) then
+		if trace.Entity:IsValid() and not (self:GetClass() == trace.Entity:GetClass()) then
 			local target = trace.Entity
 			if SERVER then
 				local dmginfo = DamageInfo()
@@ -126,11 +128,11 @@ function ENT:MeleeAttack()
 				dmginfo:SetInflictor(self)
 				dmginfo:SetDamageType(DMG_CLUB)
 				
-				//target:TakeDamage(self.Secondary.Damage, self.Owner, self)
+				--target:TakeDamage(self.Secondary.Damage, self.Owner, self)
 				target:TakeDamageInfo(dmginfo)
 
-				//local phys = target:GetPhysicsObject()
-				//phys:SetVelocity(self.Owner:GetAimVector() * 1337)
+				--local phys = target:GetPhysicsObject()
+				--phys:SetVelocity(self.Owner:GetAimVector() * 1337)
 			end
 			if (trace.MatType == MAT_FLESH ) then
 				self:EmitSound("Flesh.ImpactHard")	
@@ -144,7 +146,7 @@ function ENT:MeleeAttack()
 				
 				util.Effect( "BloodImpact", effectdata )
 			else
-				//util.Decal("ManhackCut", traceline.StartPos + traceline.HitNormal, traceline.HitPos - traceline.HitNormal)
+				--util.Decal("ManhackCut", traceline.StartPos + traceline.HitNormal, traceline.HitPos - traceline.HitNormal)
 				self:EmitSound("Weapon_Knife.HitWall")
 			end
 
@@ -152,10 +154,10 @@ function ENT:MeleeAttack()
 
 	elseif trace.HitWorld then
 		self:EmitSound("Weapon_Knife.HitWall")
-		//util.Decal("ManhackCut", traceline.StartPos + traceline.HitNormal, traceline.HitPos - traceline.HitNormal)	
+		--util.Decal("ManhackCut", traceline.StartPos + traceline.HitNormal, traceline.HitPos - traceline.HitNormal)	
 	end
 	
-		self.NextAttack = CurTime() + self.AttackDelay
+		
 
 	end
 end

@@ -22,7 +22,7 @@ end
 function SetUniTimer(int)
 	SetGlobalInt("Bronx_UniversalTimer", int or 0)
 	SetGlobalFloat("Bronx_TimerSetTime", CurTime())
-end
+end 
 
 timer.Create("Bronx_UniversalTimer", 1, 0, function() 
 	SetGlobalInt("Bronx_UniversalTimer", math.max(GetGlobalInt("Bronx_UniversalTimer", 0) - 1, 0) ) 

@@ -151,6 +151,7 @@ end
 
 SWEP.ReloadSound = Sound("Weapon_Pistol.Reload")
 function SWEP:OnReload()
+	if(self.Owner:KeyDown(IN_ATTACK)) then return end
 	if (self.Weapon:Clip1() < self.Primary.ClipSize) and (self.Owner:GetAmmoCount(self.Primary.Ammo) > 0) then
 		self:EmitSound( self.ReloadSound )
 	end
