@@ -171,8 +171,8 @@ function SWEP:MeleeAttack()
 		for k, v in pairs( targets ) do
 			--print(v:GetClass())
 			if v:IsWeapon() or meleeBlacklist[v:GetClass()] or (v:EntIndex() < 0) then continue end --For some reason Clientside-only effects count as entities. 
-			--Using Classnames to identify Clientside models doesn't work. But I just figured out that you CAN identify them by the commonality that their Entity Indices are all -1.
-			print(v)
+				--Using Classnames to identify Clientside models doesn't work. But I just figured out that you CAN identify them by the commonality that their Entity Indices are all -1.
+			--print(v)
 			if IsValid(v) and v.IsBronxCitizen and SERVER then
 				v:BronxMeleeStun()
 				--v:SetVelocity(self:GetOwner():GetAimVector() * 500)
@@ -190,7 +190,7 @@ function SWEP:MeleeAttack()
 end
 
 
-//Animation stuff
+--Animation stuff
 SWEP.MeleeOldLMT = 0
 SWEP.meleeviewmodel = {}
 SWEP.meleeviewmodel.origin = Vector(0,0,0)
@@ -199,8 +199,8 @@ function SWEP:WatViewModelCalcViewMelee( ply, origin, angles, fov )
 	/*
 	if(ply:KeyPressed(IN_ATTACK2) && self.MeleeOldLMT < self:GetLMT()) then
 
-		//self.meleeviewmodel.origin = Bezier(self.MeleePos[1], self.MeleePos[2], self.MeleePos[3], 1)
-		//self.meleeviewmodel.angles = Bezier(self.MeleeAng[1], self.MeleeAng[2], self.MeleeAng[3], 1)
+		--self.meleeviewmodel.origin = Bezier(self.MeleePos[1], self.MeleePos[2], self.MeleePos[3], 1)
+		--self.meleeviewmodel.angles = Bezier(self.MeleeAng[1], self.MeleeAng[2], self.MeleeAng[3], 1)
 		self.MeleeOldLMT = self:GetLMT()
 	end
 	*/
@@ -213,7 +213,7 @@ function SWEP:WatViewModelCalcViewMelee( ply, origin, angles, fov )
 		self.meleeviewmodel.angles = SmoothApproachAngle(self.meleeviewmodel.angles, Angle(0,0,0), FrameTime()*5)
 	end
 	
-	//self.cvfaiviewmodel.origin.y = SmoothApproach(self.cvfaiviewmodel.origin.y, 0, FrameTime()*10)
+	--self.cvfaiviewmodel.origin.y = SmoothApproach(self.cvfaiviewmodel.origin.y, 0, FrameTime()*10)
 	
 	return self.meleeviewmodel
 end

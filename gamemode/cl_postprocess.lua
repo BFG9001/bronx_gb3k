@@ -21,5 +21,5 @@ concommand.Add("bronx_brighten_enable", function(ply, cmd, args, argStr) if ply 
 concommand.Add("bronx_brighten_disable", function(ply, cmd, args, argStr) if ply == LocalPlayer() then COLORDATA = colorDataDefault end end)
 function GM:RenderScreenspaceEffects()
 	DrawColorModify( COLORDATA )
-	DrawSobel( 1 )
+	DrawSobel( 1.2 )
 end

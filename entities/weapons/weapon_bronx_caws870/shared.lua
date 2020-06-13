@@ -37,7 +37,7 @@ SWEP.SlotPos 					= 1
 SWEP.CSMuzzleFlashes 			= true
 SWEP.CSMuzzleX 					= false
 
-SWEP.Primary.ClipSize			= 8
+SWEP.Primary.ClipSize			= 7
 SWEP.Primary.DefaultClip 		= 42
 SWEP.Primary.Ammo 				= "buckshot"
 SWEP.Primary.Automatic 			= false
@@ -56,11 +56,11 @@ SWEP.AccurateCrosshair 			= false
 ---------
 SWEP.HoldType 					= "shotgun"
 
-SWEP.Primary.Damage 			= 26
+SWEP.Primary.Damage 			= 25
 SWEP.Primary.DamageFalloff		= 0.15
 SWEP.Primary.Sound				= Sound("weapons/xm1014/xm1014-1.wav")
 SWEP.Primary.NumShots			= 10
-SWEP.Primary.Delay				= 60/100
+SWEP.Primary.Delay				= 60/110
 SWEP.Primary.Cone				= 0.01
 SWEP.Primary.ClumpCone			= 0.1
 SWEP.Primary.Tracer				= 1

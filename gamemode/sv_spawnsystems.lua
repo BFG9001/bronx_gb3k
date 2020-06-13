@@ -91,6 +91,9 @@ local ItemTable = {
 	"item_ammo_smg1"
 }
 local WeaponLoot = {
+	"weapon_bronx_uzi",
+	"weapon_bronx_uzi",
+	"weapon_bronx_uzi",
 	"weapon_bronx_caws870", 
 	"weapon_bronx_ma41",
 	"weapon_bronx_mack11",

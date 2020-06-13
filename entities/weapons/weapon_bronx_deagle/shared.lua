@@ -8,7 +8,7 @@ SWEP.Category 					= "Wattle Bronx"
 SWEP.Base 						= "weapon_bronxbase_bullet"
 SWEP.Spawnable 					= true
 SWEP.AdminOnly 					= false
-SWEP.m_WeaponDeploySpeed 		= 1
+SWEP.m_WeaponDeploySpeed 		= 1.5
 
 SWEP.Author 					= "BFG"
 SWEP.Contact 					= ""

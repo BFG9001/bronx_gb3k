@@ -149,7 +149,7 @@ function SWEP:StrongMeleeAttack()
 	timer.Simple( self.MeleeImpactDelay, function() if not IsValid(self) then return end self:SetHoldType(self.HoldType) end)
 
 	--if SERVER then
-		local radius = 25
+		local radius = 27
 		local origin = self:GetOwner():GetShootPos() + (self:GetOwner():EyeAngles():Forward() * (radius - 3))
 		local targets = ents.FindInSphere( origin, radius )
 		table.RemoveByValue( targets, self:GetOwner() )

@@ -31,9 +31,9 @@ SWEP.BounceWeaponIcon 			= true
 SWEP.DrawWeaponInfoBox 			= true
 SWEP.DrawAmmo 					= false
 SWEP.DrawCrosshair 				= false
-SWEP.Slot 						= 1
+SWEP.Slot 						= 0
 SWEP.SlotPos 					= 1
-//SWEP.WepSelection 				= 
+--SWEP.WepSelection 				= 
 SWEP.CSMuzzleFlashes 			= true
 SWEP.CSMuzzleX 					= false
 
@@ -60,7 +60,7 @@ SWEP.Primary.Damage 			= 80
 SWEP.Primary.DamageFalloff		= 0.001
 --SWEP.Primary.Sound				= Sound("Weapon_Pistol.NPC_Single")
 SWEP.Primary.NumShots			= 1
-SWEP.Primary.Delay				= 1
+SWEP.Primary.Delay				= 1.1
 
 
 SWEP.VMPosOffset 				= Vector(0,0,0)
@@ -111,3 +111,4 @@ SWEP.VElements = {
 }
 
 SWEP.WElements = {}
+

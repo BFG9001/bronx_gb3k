@@ -8,7 +8,7 @@ ENT.StartingHealth = 60
 ENT.AttackDistance = 50
 ENT.AttackDamage = 2.25
 ENT.AttackDelay = .5
-ENT.StunTime = 1.1
+ENT.StunTime = 1
 local meleeSwingTime = .45
 
 ENT.WeaponModels = { "models/weapons/w_knife_t.mdl", "models/props_canal/mattpipe.mdl", "models/weapons/w_crowbar.mdl" }

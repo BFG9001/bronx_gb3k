@@ -4,6 +4,7 @@ GM.SpawnWeapons = {}
 GM.SpawnWeapons["Primary"] = {"weapon_bronx_caws870", "weapon_bronx_mack11"}
 GM.SpawnWeapons["Secondary"] = {"weapon_bronx_glok17", "weapon_bronx_pipe", "weapon_bronx_baton", "weapon_bronx_deagle"}
 GM.SpawnWeapons["Equipment"] = {"weapon_bronx_melonbomb"}
+GM.SpawnWeapons["Melee"] = {"weapon_bronx_pipe", "weapon_bronx_baton"}
 
 function GM:PlayerLoadout( ply )
 	ply:Give(table.Random(self.SpawnWeapons["Primary"]))

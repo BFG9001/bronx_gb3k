@@ -6,7 +6,7 @@ GAMESTATE.RoundTime = 600
 
 GAMESTATE.NPCSpawnDelay = 15
 GAMESTATE.MaxNPCs = 55
-GAMESTATE.NPCBaseAmount = 8
+GAMESTATE.NPCBaseAmount = 7
 
 if game.SinglePlayer() then GAMESTATE.MaxNPCs = 40 end --For optimization reasons
 
@@ -27,7 +27,7 @@ function GAMESTATE:StateBegin()
 		GAMEMODE:SpawnLootDrop(calcLoot)
 		self.NextLootDrop = CurTime() + 45
 
-		self.NextNPCWave = CurTime() + 5
+		self.NextNPCWave = CurTime() + 8
 	end
 end
 
